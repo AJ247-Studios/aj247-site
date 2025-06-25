@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJ247 Studios | Films in Motion. Moments That Matter.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --charcoal: #1C1C1E;
+            --gold: #D4AF37;
+            --teal: #1DAAA4;
+            --cream: #F9F8F4;
+            --blush: #F6D4CB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--charcoal);
+            line-height: 1.6;
+            background-color: var(--cream);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Bebas Neue', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: normal;
+        }
+
+        .script-font {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            text-transform: none;
+        }
+
+        /* Header/Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(28, 28, 30, 0.95);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+
+        .nav-btn {
+            background-color: var(--gold);
+            color: var(--charcoal);
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--teal);
+            color: white;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(28, 28, 30, 0.7), rgba(28, 28, 30, 0.5)), 
+                        url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin-bottom: 3rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--gold);
+            color: var(--charcoal);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--teal);
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--charcoal);
+        }
+
+        /* Services Section */
+        .section {
+            padding: 6rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--gold);
+            margin: 1rem auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            padding: 2rem 1.5rem;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--teal);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--charcoal);
+            color: white;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            text-align: center;
+        }
+
+        .about-text h2 {
+            color: var(--gold);
+            margin-bottom: 2rem;
+        }
+
+        .about-text p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .about-tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-top: 2rem;
+        }
+
+        .team-members {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--gold);
+            margin: 0 auto 1rem;
+            display: block;
+        }
+
+        .member-name {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-role {
+            color: var(--teal);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(28, 28, 30, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-icon {
+            color: white;
+            font-size: 3rem;
+        }
+
+        .video-icon {
+            color: var(--teal);
+        }
+
+        .photo-icon {
+            color: var(--gold);
+        }
+
+        /* Booking CTA */
+        .booking-cta {
+            background-color: var(--cream);
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .booking-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--charcoal);
+        }
+
+        .booking-cta p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .booking-btns {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .booking-btn {
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .video-btn {
+            background-color: var(--teal);
+            color: white;
+        }
+
+        .video-btn:hover {
+            background-color: var(--charcoal);
+        }
+
+        .photo-btn {
+            background-color: var(--gold);
+            color: var(--charcoal);
+        }
+
+        .photo-btn:hover {
+            background-color: var(--charcoal);
+            color: white;
+        }
+
+        .duo-btn {
+            background-color: var(--charcoal);
+            color: white;
+            border: 2px solid var(--charcoal);
+        }
+
+        .duo-btn:hover {
+            background-color: transparent;
+            color: var(--charcoal);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--charcoal);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .footer-logo span {
+            color: var(--gold);
+        }
+
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--teal);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--gold);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--charcoal);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: left 0.3s;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            nav ul li {
+                margin: 1rem 0;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .team-members {
+                grid-template-columns: 1fr;
+                margin-top: 3rem;
+            }
+
+            .booking-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header>
+        <a href="#" class="logo">AJ<span>247</span> Studios</a>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="josiah.html">Videography</a></li>
+                <li><a href="anthony.html">Photography</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.html#booking" class="nav-btn">Book Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="fade-in">AJ<span>247</span> Studios</h1>
+        <p class="fade-in delay-1">Films in Motion. Moments That Matter.</p>
+        <p class="fade-in delay-1">A creative duo capturing life — from weddings to concerts, sports to portraits.</p>
+        <div class="hero-btns fade-in delay-2">
+            <a href="josiah.html" class="btn btn-primary"><i class="fas fa-video"></i> Explore Videography</a>
+            <a href="anthony.html" class="btn btn-secondary"><i class="fas fa-camera"></i> Explore Photography</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon"><i class="fas fa-music"></i></div>
+                <h3>Concerts</h3>
+                <p>Capturing the energy and emotion of live performances with dynamic video and striking photos.</p>
+            </div>
+            <div class="service-card fade-in delay-1">
+                <div class="service-icon"><i class="fas fa-running"></i></div>
+                <h3>Sports Events</h3>
+                <p>Action-packed coverage that freezes the intensity and celebrates the triumphs.</p>
+            </div>
+            <div class="service-card fade-in delay-2">
+                <div class="service-icon"><i class="fas fa-ring"></i></div>
+                <h3>Weddings</h3>
+                <p>Timeless storytelling that preserves every precious moment of your special day.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon"><i class="fas fa-heart"></i></div>
+                <h3>Engagements</h3>
+                <p>Romantic sessions that capture the love and excitement of this beautiful milestone.</p>
+            </div>
+            <div class="service-card fade-in delay-1">
+                <div class="service-icon"><i class="fas fa-campground"></i></div>
+                <h3>Camps</h3>
+                <p>Documenting the fun, friendships, and adventures of camp experiences.</p>
+            </div>
+            <div class="service-card fade-in delay-2">
+                <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+                <h3>School Events</h3>
+                <p>Comprehensive coverage of performances, games, and special moments.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon"><i class="fas fa-portrait"></i></div>
+                <h3>Portraits</h3>
+                <p>Professional sessions that highlight personality and create lasting memories.</p>
+            </div>
+            <div class="service-card fade-in delay-1">
+                <div class="service-icon"><i class="fas fa-briefcase"></i></div>
+                <h3>Promo Videos</h3>
+                <p>Elevating your brand with compelling visual storytelling for businesses.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>The Creative Duo</h2>
+                <p>AJ247 Studios is built on the partnership of two passionate visual storytellers with complementary skills and a shared vision for capturing authentic moments.</p>
+                <p class="about-tagline">"Two creators. One story. Book us together or solo."</p>
+            </div>
+            <div class="team-members">
+                <div class="team-member fade-in">
+                    <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Jo - Videographer" class="member-photo">
+                    <h3 class="member-name">Josiah</h3>
+                    <p class="member-role">Videographer</p>
+                    <p>Captures rhythm and energy in motion. Story-first creator.</p>
+                </div>
+                <div class="team-member fade-in delay-1">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1976&q=80" alt="Alex - Photographer" class="member-photo">
+                    <h3 class="member-name">Anthony</h3>
+                    <p class="member-role">Photographer</p>
+                    <p>Freezes emotion and detail in timeless stills.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section">
+        <h2 class="section-title">Our Work</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item fade-in">
+                <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Wedding Video" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <i class="fas fa-play portfolio-icon video-icon"></i>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in delay-1">
+                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Concert Photo" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <i class="fas fa-expand portfolio-icon photo-icon"></i>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in delay-2">
+                <img src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Sports Video" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <i class="fas fa-play portfolio-icon video-icon"></i>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Portrait Photo" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <i class="fas fa-expand portfolio-icon photo-icon"></i>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in delay-1">
+                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Promo Video" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <i class="fas fa-play portfolio-icon video-icon"></i>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in delay-2">
+                <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Engagement Photo" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <i class="fas fa-expand portfolio-icon photo-icon"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking CTA -->
+    <section class="booking-cta">
+        <h2>Book Us Solo or Together</h2>
+        <p>We offer individual photo/video services or full coverage for your story.</p>
+        <div class="booking-btns">
+            <a href="#" class="booking-btn video-btn"><i class="fas fa-video"></i> Hire Just Josiah (Video)</a>
+            <a href="#" class="booking-btn photo-btn"><i class="fas fa-camera"></i> Hire Just Anthony (Photo)</a>
+            <a href="#" class="booking-btn duo-btn"><i class="fas fa-handshake"></i> Book the Duo</a>
+        </div>
+    </section>
+
+   
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Album Gallery | AJ247 Studios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --charcoal: #1C1C1E;
+      --cream: #F9F8F4;
+      --gold: #D4AF37;
+      --teal: #1DAAA4;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--cream);
+      color: var(--charcoal);
+    }
+
+    header {
+      background: var(--charcoal);
+      color: var(--cream);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      text-decoration: none;
+      color: var(--cream);
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: var(--cream);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    .intro {
+      text-align: center;
+      padding: 3rem 2rem 1rem;
+    }
+
+    .intro h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+
+    .intro p {
+      color: #555;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 1rem auto 2rem;
+    }
+
+    /* Masonry Grid */
+    .gallery {
+      column-count: 3;
+      column-gap: 1.5rem;
+      padding: 1rem 2rem;
+    }
+
+    .gallery-item {
+      background: white;
+      margin-bottom: 1.5rem;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      break-inside: avoid;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      display: block;
+    }
+
+    .caption {
+      padding: 0.8rem 1rem;
+      font-size: 0.95rem;
+      background-color: var(--cream);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--charcoal);
+      color: var(--cream);
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--gold);
+      margin: 0 0.5rem;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--teal);
+    }
+
+    @media (max-width: 992px) {
+      .gallery {
+        column-count: 2;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .gallery {
+        column-count: 1;
+      }
+
+      .intro h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">AJ<span>247</span> Studios</a>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="josiah.html">Videography</a></li>
+      <li><a href="anthony.html">Photography</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="intro">
+  <h1>Album: Summer Wedding at the Lake</h1>
+  <p>A golden evening, real emotions, and moments captured as they happened — this is one for the heart.</p>
+</section>
+
+<section class="gallery">
+  <div class="gallery-item">
+    <img src="https://source.unsplash.com/400x600/?wedding,couple" alt="Wedding couple 1" />
+    <div class="caption">Just before the ceremony began 🌅</div>
+  </div>
+  <div class="gallery-item">
+    <img src="https://source.unsplash.com/400x500/?wedding,bride" alt="Bride" />
+    <div class="caption">Candid bridal moment</div>
+  </div>
+  <div class="gallery-item">
+    <img src="https://source.unsplash.com/400x300/?wedding,details" alt="Details" />
+    <div class="caption">Rings and ribbon</div>
+  </div>
+  <div class="gallery-item">
+    <img src="https://source.unsplash.com/400x600/?wedding,dance" alt="First Dance" />
+    <div class="caption">Their first dance together</div>
+  </div>
+  <div class="gallery-item">
+    <img src="https://source.unsplash.com/400x400/?wedding,kiss" alt="Kiss moment" />
+    <div class="caption">Just married 💍</div>
+  </div>
+  <div class="gallery-item">
+    <img src="https://source.unsplash.com/400x550/?wedding,family" alt="Family moment" />
+    <div class="caption">Family hugs and happy tears</div>
+  </div>
+  <div class="gallery-item">
+    <img src="https://source.unsplash.com/400x400/?wedding,party" alt="Reception" />
+    <div class="caption">Reception under string lights ✨</div>
+  </div>
+</section>
+
+<footer>
+  <p>AJ247 Studios – Telling Your Story Frame by Frame</p>
+  <p>
+    <a href="index.html">Home</a> |
+    <a href="josiah.html">Videography</a> |
+    <a href="anthony.html">Photography</a> |
+    <a href="contact.html">Contact</a>
+  </p>
+  <p>© 2025 AJ247 Studios. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

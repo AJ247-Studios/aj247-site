@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | AJ247 Studios</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --charcoal: #1C1C1E;
+      --cream: #F9F8F4;
+      --gold: #D4AF37;
+      --teal: #1DAAA4;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--cream);
+      color: var(--charcoal);
+    }
+
+    h1, h2, h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    p.quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+    }
+
+    /* Header */
+    header {
+      background-color: var(--charcoal);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      color: var(--cream);
+      font-size: 2rem;
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--cream);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(rgba(28,28,30,0.5), rgba(28,28,30,0.5)), url('https://images.unsplash.com/photo-1534790566855-4cb788d389ec?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    /* Meet the Duo */
+    .duo-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      padding: 4rem 2rem;
+      align-items: center;
+    }
+
+    .bio-card {
+      background: white;
+      border-left: 5px solid var(--gold);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .bio-card img {
+      width: 100%;
+      max-width: 250px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+    }
+
+    .bio-card h3 {
+      color: var(--teal);
+      font-size: 1.5rem;
+    }
+
+    .bio-card .fun-fact {
+      font-style: italic;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    /* Mission Section */
+    .mission {
+      background: var(--cream);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .mission h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .mission p {
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 500;
+    }
+
+    .feature-item i {
+      color: var(--teal);
+      font-size: 1.3rem;
+    }
+
+    /* Timeline */
+    .timeline {
+      padding: 4rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .timeline ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    .timeline li {
+      position: relative;
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+
+    .timeline li::before {
+      content: "📍";
+      position: absolute;
+      left: 0;
+    }
+
+    /* BTS Section */
+    .bts {
+      padding: 4rem 2rem;
+      background: white;
+      text-align: center;
+    }
+
+    .bts h2 {
+      margin-bottom: 1rem;
+    }
+
+    .bts-images {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .bts-images img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    /* CTA */
+    .cta {
+      background: var(--charcoal);
+      color: var(--gold);
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .cta h2 {
+      margin-bottom: 1rem;
+    }
+
+    .cta-buttons {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .cta-buttons a {
+      padding: 0.8rem 1.5rem;
+      background-color: var(--gold);
+      color: var(--charcoal);
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .cta-buttons a:hover {
+      background-color: var(--teal);
+      color: white;
+    }
+
+    /* Footer */
+    footer {
+      background: #111;
+      color: #aaa;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    footer a {
+      color: #ddd;
+      margin: 0 0.5rem;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--gold);
+    }
+
+    @media (max-width: 768px) {
+      .duo-section, .bts-images {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .bio-card {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">AJ<span>247</span> Studios</a>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="josiah.html">Videography</a></li>
+      <li><a href="anthony.html">Photography</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>The Creators Behind the Lens</h1>
+  <p>Two artists. One shared vision — to capture life’s most unforgettable moments.</p>
+</section>
+
+<section class="duo-section">
+  <div class="bio-card">
+    <img src="https://via.placeholder.com/250" alt="Jo – Videographer" />
+    <h3>🎬 Jo – Videographer</h3>
+    <p>I’m Jo, a filmmaker driven by energy and movement. Whether I’m capturing wedding vows or live concerts, I chase emotion through the lens and edit with rhythm and story. Every video is a memory in motion.</p>
+    <p class="fun-fact">“My favorite moment to capture? The exact second before a crowd goes wild.”</p>
+  </div>
+  <div class="bio-card">
+    <img src="https://via.placeholder.com/250" alt="Photographer" />
+    <h3>📸 Alex – Photographer</h3>
+    <p>I believe great photography doesn’t just freeze time — it captures feeling. Whether it’s the quiet of a pre-wedding moment or the chaos of a football match, I find truth in light and timing.</p>
+    <p class="fun-fact">“I always bring an extra lens… and snacks.”</p>
+  </div>
+</section>
+
+<section class="mission">
+  <h2>Why We Do What We Do</h2>
+  <p>At AJ247 Studios, we tell real stories — no filters, no fluff. We believe in honesty, emotion, and excellence. Whether you hire one of us or both, you’ll get passionate creators who care deeply about your story. Our work is personal because people matter.</p>
+  <div class="features">
+    <div class="feature-item"><i class="fas fa-lightbulb"></i> Creative Direction Included</div>
+    <div class="feature-item"><i class="fas fa-stopwatch"></i> Fast Turnaround</div>
+    <div class="feature-item"><i class="fas fa-comments"></i> Clear Communication</div>
+    <div class="feature-item"><i class="fas fa-magic"></i> Premium Look, Friendly Team</div>
+  </div>
+</section>
+
+<section class="timeline">
+  <h2>Our Journey</h2>
+  <ul>
+    <li>📆 2023 — First client project (wedding + concert)</li>
+    <li>📷 2024 — Business registered, brand identity launched</li>
+    <li>🚀 2025 — Website launched + booked first joint gig</li>
+  </ul>
+</section>
+
+<section class="bts">
+  <h2>Behind the Scenes</h2>
+  <p>We’re more than just creatives — we’re your team.</p>
+  <div class="bts-images">
+    <img src="https://via.placeholder.com/300x200" alt="BTS Filming"/>
+    <img src="https://via.placeholder.com/300x200" alt="Duo Working"/>
+    <img src="https://via.placeholder.com/300x200" alt="Gear Setup"/>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Ready to Create Something Timeless?</h2>
+  <p>Book us solo or together — let’s bring your vision to life.</p>
+  <div class="cta-buttons">
+    <a href="contact.html#jo">🎥 Hire Jo</a>
+    <a href="contact.html#alex">📸 Hire Photographer</a>
+    <a href="contact.html#both">🤝 Book the Duo</a>
+  </div>
+</section>
+
+<footer>
+  <p><strong>AJ247 Studios</strong> – Telling Your Story Frame by Frame</p>
+  <p>
+    <a href="index.html">Home</a> |
+    <a href="josiah.html">Videography</a> |
+    <a href="anthony.html">Photography</a> |
+    <a href="contact.html">Contact</a>
+  </p>
+  <p>© 2025 AJ247 Studios. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

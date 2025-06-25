@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJ247 Studios - Photography Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --charcoal: #1C1C1E;
+            --gold: #D4AF37;
+            --teal: #1DAAA4;
+            --cream: #F9F8F4;
+            --blush: #F6D4CB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--charcoal);
+            background-color: var(--cream);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--charcoal);
+            color: var(--cream);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--cream);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 1.5rem;
+        }
+
+        nav a {
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        .cta-button {
+            background-color: var(--gold);
+            color: var(--charcoal);
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: var(--cream);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(28, 28, 30, 0.7), rgba(28, 28, 30, 0.7)), 
+                        url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--cream);
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+        }
+
+        .hero .quote {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin-bottom: 2rem;
+        }
+
+        .scroll-down {
+            margin-top: 3rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Gallery Section */
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--charcoal);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            aspect-ratio: 4/3;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 1.5rem;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .category-tag {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .wedding-tag {
+            background-color: var(--gold);
+            color: var(--charcoal);
+        }
+
+        .concert-tag {
+            background-color: var(--teal);
+        }
+
+        .sports-tag {
+            background-color: #4CAF50;
+        }
+
+        .portrait-tag {
+            background-color: var(--blush);
+            color: var(--charcoal);
+        }
+
+        /* Packages Section */
+        .packages {
+            background-color: var(--charcoal);
+            color: var(--cream);
+        }
+
+        .packages .section-title {
+            color: var(--cream);
+        }
+
+        .package-categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .category-btn {
+            background: none;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background-color: var(--gold);
+            color: var(--charcoal);
+        }
+
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .package-card {
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .package-card.wedding::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--gold);
+        }
+
+        .package-card.concert::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--teal);
+        }
+
+        .package-card.sports::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: #4CAF50;
+        }
+
+        .package-card.portrait::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--blush);
+        }
+
+        .package-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .package-card.concert h3 {
+            color: var(--teal);
+        }
+
+        .package-card.sports h3 {
+            color: #4CAF50;
+        }
+
+        .package-card.portrait h3 {
+            color: var(--blush);
+        }
+
+        .package-price {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .package-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .package-features li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .package-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        .package-card.concert .package-features li::before {
+            color: var(--teal);
+        }
+
+        .package-card.sports .package-features li::before {
+            color: #4CAF50;
+        }
+
+        .package-card.portrait .package-features li::before {
+            color: var(--blush);
+        }
+
+        .package-btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--charcoal);
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .package-card.concert .package-btn {
+            background-color: var(--teal);
+            color: white;
+        }
+
+        .package-card.sports .package-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .package-card.portrait .package-btn {
+            background-color: var(--blush);
+            color: var(--charcoal);
+        }
+
+        .package-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            background-color: var(--cream);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .testimonial .quote {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--charcoal);
+            color: var(--cream);
+        }
+
+        .contact .section-title {
+            color: var(--cream);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px;
+            background-color: rgba(255,255,255,0.9);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--gold);
+            color: var(--charcoal);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--cream);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--charcoal);
+            color: var(--cream);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: left;
+        }
+
+        .footer-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--cream);
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo span {
+            color: var(--gold);
+        }
+
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--cream);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--cream);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--gold);
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero .quote {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .package-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo">AJ<span>247</span> Studios</a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="josiah.html">Videography</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.html#booking" class="cta-button">Book Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Timeless Photography by AJ247</h1>
+        <p class="quote">From fleeting glances to grand emotions — captured frame by frame.</p>
+        <div class="scroll-down">
+            <i class="fas fa-chevron-down fa-2x"></i>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section">
+        <h2 class="section-title">Portfolio Gallery</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Wedding Photography">
+                <div class="category-tag wedding-tag">Wedding</div>
+                <div class="gallery-overlay">
+                    <h3>Sarah & Michael's Wedding</h3>
+                    <p>View Album</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Concert Photography">
+                <div class="category-tag concert-tag">Concert</div>
+                <div class="gallery-overlay">
+                    <h3>Summer Music Festival</h3>
+                    <p>View Album</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1405&q=80" alt="Sports Photography">
+                <div class="category-tag sports-tag">Sports</div>
+                <div class="gallery-overlay">
+                    <h3>Championship Game</h3>
+                    <p>View Album</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Portrait Photography">
+                <div class="category-tag portrait-tag">Portrait</div>
+                <div class="gallery-overlay">
+                    <h3>Professional Headshots</h3>
+                    <p>View Album</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Family Photography">
+                <div class="category-tag">Family</div>
+                <div class="gallery-overlay">
+                    <h3>Family Session</h3>
+                    <p>View Album</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="Graduation Photography">
+                <div class="category-tag">Graduation</div>
+                <div class="gallery-overlay">
+                    <h3>University Graduation</h3>
+                    <p>View Album</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="section packages">
+        <h2 class="section-title">Photography Packages</h2>
+        <div class="package-categories">
+            <button class="category-btn active">All</button>
+            <button class="category-btn">Weddings</button>
+            <button class="category-btn">Concerts</button>
+            <button class="category-btn">Sports</button>
+            <button class="category-btn">Portraits</button>
+        </div>
+        <div class="package-grid">
+            <!-- Wedding Packages -->
+            <div class="package-card wedding">
+                <h3>Ceremony Only</h3>
+                <div class="package-price">1000 zł</div>
+                <ul class="package-features">
+                    <li>4 hrs coverage</li>
+                    <li>100 photos</li>
+                    <li>USB delivery</li>
+                    <li>Basic editing</li>
+                </ul>
+                <a href="#" class="package-btn">Book Now</a>
+            </div>
+            <div class="package-card wedding">
+                <h3>Full Day</h3>
+                <div class="package-price">1800 zł</div>
+                <ul class="package-features">
+                    <li>8 hrs coverage</li>
+                    <li>200 photos</li>
+                    <li>USB + online gallery</li>
+                    <li>Premium editing</li>
+                </ul>
+                <a href="#" class="package-btn">Book Now</a>
+            </div>
+            <!-- Concert Packages -->
+            <div class="package-card concert">
+                <h3>Standard Concert</h3>
+                <div class="package-price">400 zł</div>
+                <ul class="package-features">
+                    <li>1–2 hrs coverage</li>
+                    <li>50+ photos</li>
+                    <li>High-energy shots</li>
+                    <li>Basic editing</li>
+                </ul>
+                <a href="#" class="package-btn">Book Now</a>
+            </div>
+            <!-- Sports Packages -->
+            <div class="package-card sports">
+                <h3>Full Game</h3>
+                <div class="package-price">300 zł</div>
+                <ul class="package-features">
+                    <li>Full match coverage</li>
+                    <li>30+ images</li>
+                    <li>Action shots</li>
+                    <li>Basic editing</li>
+                </ul>
+                <a href="#" class="package-btn">Book Now</a>
+            </div>
+            <!-- Portrait Packages -->
+            <div class="package-card portrait">
+                <h3>Standard Portrait</h3>
+                <div class="package-price">300 zł</div>
+                <ul class="package-features">
+                    <li>1 hr session</li>
+                    <li>30 images</li>
+                    <li>1 outfit change</li>
+                    <li>Premium editing</li>
+                </ul>
+                <a href="#" class="package-btn">Book Now</a>
+            </div>
+            <!-- Family Packages -->
+            <div class="package-card">
+                <h3>Full Family</h3>
+                <div class="package-price">500 zł</div>
+                <ul class="package-features">
+                    <li>80 min session</li>
+                    <li>30 photos</li>
+                    <li>USB delivery</li>
+                    <li>Premium editing</li>
+                </ul>
+                <a href="#" class="package-btn">Book Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="section why-choose">
+        <h2 class="section-title">Why Choose Our Photographer</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Attention to Detail</h3>
+                <p>Every shot is carefully composed to capture the perfect moment with precision and artistry.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Natural Editing</h3>
+                <p>Our editing enhances your photos while maintaining their authentic, natural beauty.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📸</div>
+                <h3>Friendly & Adaptable</h3>
+                <p>Comfortable in any environment, making subjects feel at ease for genuine expressions.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💍</div>
+                <h3>Emotion Captured</h3>
+                <p>Specializing in capturing the real
+</html>
