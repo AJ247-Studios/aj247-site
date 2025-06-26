@@ -103,7 +103,7 @@
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(28, 28, 30, 0.7), rgba(28, 28, 30, 0.7)), 
-                        url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+                url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
             height: 80vh;
             display: flex;
             flex-direction: column;
@@ -216,15 +216,32 @@
 
         .concert-tag {
             background-color: var(--teal);
+            color: white;
         }
 
         .sports-tag {
             background-color: #4CAF50;
+            color: white;
         }
 
         .portrait-tag {
             background-color: var(--blush);
             color: var(--charcoal);
+        }
+
+        .family-tag {
+            background-color: #FF9800; /* Orange */
+            color: white;
+        }
+
+        .camps-tag {
+            background-color: #3F51B5; /* Indigo/Blue-Purple */
+            color: white;
+        }
+
+        .graduation-tag {
+            background-color: #9C27B0; /* Purple */
+            color: white;
         }
 
         /* Packages Section */
@@ -283,6 +300,7 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
+        
         .package-card.wedding::before {
             content: '';
             position: absolute;
@@ -323,6 +341,36 @@
             background-color: var(--blush);
         }
 
+        .package-card.family::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: #FF9800; /* Orange */
+        }
+
+        .package-card.camps::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: #3F51B5; /* Blue-purple */
+        }
+
+        .package-card.graduation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: #9C27B0; /* Purple */
+        }
+
         .package-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
@@ -341,6 +389,33 @@
             color: var(--blush);
         }
 
+        .package-card.family h3 {
+            color: #FF9800;
+        }
+
+        .package-card.camps h3 {
+            color: #3F51B5;
+        }
+
+        .package-card.graduation h3 {
+            color: #9C27B0;
+        }
+
+        .package-card.family .package-btn {
+            background-color: #FF9800;
+            color: white;
+        }
+
+        .package-card.camps .package-btn {
+            background-color: #3F51B5;
+            color: white;
+        }
+
+        .package-card.graduation .package-btn {
+            background-color: #9C27B0;
+            color: white;
+        }
+                
         .package-price {
             font-size: 2rem;
             font-weight: 700;
@@ -377,6 +452,18 @@
             color: var(--blush);
         }
 
+        .package-card.family .package-features li::before {
+            color: #FF9800;
+        }
+
+        .package-card.camps .package-features li::before {
+            color: #3F51B5;
+        }
+
+        .package-card.graduation .package-features li::before {
+            color: #9C27B0;
+        }
+                
         .package-btn {
             display: inline-block;
             background-color: var(--gold);
@@ -669,29 +756,8 @@
         <h2 class="section-title">Portfolio Gallery</h2>
         <div class="gallery">
 
-<!--
-
-            <a href="sarah-michael-wedding.html" class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Wedding Photography">
-                <div class="category-tag wedding-tag">Wedding</div>
-                <div class="gallery-overlay">
-                    <h3>Sarah & Michael's Wedding</h3>
-                    <p>View Album</p>
-                </div>
-            </a>
-            <a href="summer-music-festival.html" class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Concert Photography">
-                <div class="category-tag concert-tag">Concert</div>
-                <div class="gallery-overlay">
-                    <h3>Summer Music Festival</h3>
-                    <p>View Album</p>
-                </div>
-            </a>
-
--->
-
             <a href="album_photo_football.html" class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1405&q=80" alt="Sports Photography">
+                <img src="sports/football_pre.webp" alt="Sports Photography">
                 <div class="category-tag sports-tag">Sports</div>
                 <div class="gallery-overlay">
                     <h3>HUTNIK KRAKOW VS ZAGLEBIE II LUBIN</h3>
@@ -706,28 +772,23 @@
                     <p>View Album</p>
                 </div>
             </a>
-                <!--
-
-
-            <a href="family-session.html" class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Family Photography">
-                <div class="category-tag">Family</div>
+            <a href="album_photo_football2.html" class="gallery-item">
+                <img src="sports2/football_pre.webp" alt="Sports Photography">
+                <div class="category-tag sports-tag">Sports</div>
                 <div class="gallery-overlay">
-                    <h3>Family Session</h3>
+                    <h3>CRACOVIA VS LEGIA WARSZAWAN</h3>
                     <p>View Album</p>
                 </div>
             </a>
-            <a href="university-graduation.html" class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="Graduation Photography">
-                <div class="category-tag">Graduation</div>
+            <a href="album_photo_motocross.html" class="gallery-item">
+                <img src="motocross/motocross_pre.webp" alt="Motocross Photography">
+                <div class="category-tag family-tag">Motocross</div>
                 <div class="gallery-overlay">
-                    <h3>University Graduation</h3>
+                    <h3>Speedway Kraków 🇵🇱 vs Trans MF Landshut Devils</h3>
                     <p>View Album</p>
                 </div>
             </a>
 
-
-                -->
         </div>
     </section>
 
@@ -735,17 +796,27 @@
     <section class="section packages">
         <h2 class="section-title">Photography Packages</h2>
             <div class="package-categories">
-                <button class="category-btn active">All</button>
-                <button class="category-btn">Weddings</button>
-                <button class="category-btn">Concerts</button>
-                <button class="category-btn">Sports</button>
-                <button class="category-btn">Portraits</button>
-                <button class="category-btn">Family</button>
-                <button class="category-btn">Camps</button>
-                <button class="category-btn">Graduation</button>
+                <button class="category-btn active" data-category="all">All</button>
+                <button class="category-btn" data-category="wedding">Weddings</button>
+                <button class="category-btn" data-category="concert">Concerts</button>
+                <button class="category-btn" data-category="sports">Sports</button>
+                <button class="category-btn" data-category="portrait">Portraits</button>
+                <button class="category-btn" data-category="family">Family</button>
+                <button class="category-btn" data-category="camps">Camps</button>
+                <button class="category-btn" data-category="graduation">Graduation</button>
             </div>
         <div class="package-grid">
             <!-- Concert Packages -->
+            <div class="package-card concert">
+                <h3>Mini Gig</h3>
+                <div class="package-price">100 zł</div>
+                <ul class="package-features">
+                    <li>30 mins coverage</li>
+                    <li>20 edited photos</li>
+                    <li>Artist & crowd</li>
+                </ul>
+                <a href="contact.html?package=StandardConcert%20Concert" class="package-btn">Book Now</a>
+            </div>
             <div class="package-card concert">
                 <h3>Standard Concert</h3>
                 <div class="package-price">400 zł</div>
@@ -754,7 +825,7 @@
                     <li>50+ photos</li>
                     <li>Artist & crowd</li>
                 </ul>
-                <a href="#" class="package-btn">Book Now</a>
+                <a href="contact.html?package=StandardConcert%20Concert" class="package-btn">Book Now</a>
             </div>
             <div class="package-card concert">
                 <h3>Tour Premium</h3>
@@ -763,7 +834,7 @@
                     <li>Full event coverage</li>
                     <li>100+ photos</li>
                 </ul>
-                <a href="#" class="package-btn">Book Now</a>
+                <a href="contact.html?package=TourPremium%20Concert" class="package-btn">Book Now</a>
             </div>
 
             <!-- Sports Packages -->
@@ -774,7 +845,7 @@
                     <li>1 match half</li>
                     <li>10–15 action shots</li>
                 </ul>
-                <a href="#" class="package-btn">Book Now</a>
+                <a href="contact.html?package=BasicGame%20Sports" class="package-btn">Book Now</a>
             </div>
             <div class="package-card sports">
                 <h3>Full Game</h3>
@@ -784,7 +855,7 @@
                     <li>30+ images</li>
                     <li>Team photo</li>
                 </ul>
-                <a href="#" class="package-btn">Book Now</a>
+                <a href="contact.html?package=FullGame%20Sports" class="package-btn">Book Now</a>
             </div>
             <div class="package-card sports">
                 <h3>Tournament Day</h3>
@@ -794,11 +865,11 @@
                     <li>80+ images</li>
                     <li>Teams + detail shots</li>
                 </ul>
-                <a href="#" class="package-btn">Book Now</a>
+                <a href="contact.html?package=TournamentDay%20Sports" class="package-btn">Book Now</a>
             </div>
 
-            <!-- Camp Packages (styled as portrait for visual consistency) -->
-            <div class="package-card portrait">
+            <!-- Camps -->
+            <div class="package-card camps">
                 <h3>Quick Visit</h3>
                 <div class="package-price">150 zł</div>
                 <ul class="package-features">
@@ -808,7 +879,7 @@
                 </ul>
                 <a href="#" class="package-btn">Book Now</a>
             </div>
-            <div class="package-card portrait">
+            <div class="package-card camps">
                 <h3>Half-Day Camp</h3>
                 <div class="package-price">400 zł</div>
                 <ul class="package-features">
@@ -818,7 +889,7 @@
                 </ul>
                 <a href="#" class="package-btn">Book Now</a>
             </div>
-            <div class="package-card portrait">
+            <div class="package-card camps">
                 <h3>Camp Full Story</h3>
                 <div class="package-price">2500 zł</div>
                 <ul class="package-features">
@@ -873,7 +944,7 @@
             </div>
 
             <!-- Graduation / School Events -->
-            <div class="package-card portrait">
+            <div class="package-card graduation">
                 <h3>Grad Portrait</h3>
                 <div class="package-price">150 zł</div>
                 <ul class="package-features">
@@ -882,7 +953,7 @@
                 </ul>
                 <a href="#" class="package-btn">Book Now</a>
             </div>
-            <div class="package-card portrait">
+            <div class="package-card graduation">
                 <h3>Prom Night</h3>
                 <div class="package-price">400 zł</div>
                 <ul class="package-features">
@@ -892,7 +963,7 @@
                 </ul>
                 <a href="#" class="package-btn">Book Now</a>
             </div>
-            <div class="package-card portrait">
+            <div class="package-card graduation">
                 <h3>School Day Event</h3>
                 <div class="package-price">1000 zł</div>
                 <ul class="package-features">
@@ -905,7 +976,7 @@
             </div>
 
             <!-- Family Packages (styled as portrait too) -->
-            <div class="package-card portrait">
+            <div class="package-card family">
                 <h3>Mini Family Shoot</h3>
                 <div class="package-price">250 zł</div>
                 <ul class="package-features">
@@ -914,7 +985,7 @@
                 </ul>
                 <a href="#" class="package-btn">Book Now</a>
             </div>
-            <div class="package-card portrait">
+            <div class="package-card family">
                 <h3>Full Family</h3>
                 <div class="package-price">500 zł</div>
                 <ul class="package-features">
@@ -924,7 +995,7 @@
                 </ul>
                 <a href="#" class="package-btn">Book Now</a>
             </div>
-            <div class="package-card portrait">
+            <div class="package-card family">
                 <h3>Birthday Package</h3>
                 <div class="package-price">700 zł</div>
                 <ul class="package-features">
@@ -993,36 +1064,115 @@
             <div class="feature-card">
                 <div class="feature-icon">💍</div>
                 <h3>Emotion Captured</h3>
-                <p>Specializing in capturing the real
+                <p>Specializing in capturing the real moments that matter, from laughter to happy tears.</p>
+            </div>
+        </div>
+    </section>
 
+    <!-- Contact/Booking Form Section -->
+    <section class="section contact" id="booking">
+        <h2 class="section-title">Book a Service / Contact</h2>
+        <form class="contact-form" method="POST" action="https://formsubmit.co/YOUR_EMAIL">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required placeholder="Your Name" autocomplete="name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="your@email.com" autocomplete="email">
+            </div>
+            <div class="form-group">
+                <label for="service">Service</label>
+                <select id="service" name="service" required>
+                    <option value="" disabled selected>Select a service</option>
+                    <option value="Videography">Videography</option>
+                    <option value="Photography">Photography</option>
+                    <option value="Both">Both</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required placeholder="Tell us about your project or inquiry..."></textarea>
+            </div>
+            <!-- Hidden Fields for FormSubmit -->
+            <input type="hidden" name="_subject" value="New Booking/Contact Request from AJ247 Studios Website">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="box">
+            <input type="hidden" name="_next" value="thank-you.html">
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </section>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const categoryButtons = document.querySelectorAll('.category-btn');
-        const packageCards = document.querySelectorAll('.package-card');
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                AJ<span>247</span> Studios
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="josiah.html">Videography</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#packages">Photography Packages</a></li>
+                    <li><a href="album_photo_football.html">Sports Photography</a></li>
+                    <li><a href="album_photo_portraits.html">Portrait Photography</a></li>
+                    <li><a href="album_photo_motocross.html">Motocross Photography</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <div class="copyright">
+            &copy; 2023 AJ247 Studios. All rights reserved.
+        </div>
+    </footer>
 
-        categoryButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove 'active' from all buttons
-                categoryButtons.forEach(b => b.classList.remove('active'));
-                // Set clicked button as active
-                btn.classList.add('active');
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const packageCards = document.querySelectorAll('.package-card');
 
-                const category = btn.textContent.trim().toLowerCase();
+            categoryButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove 'active' from all buttons
+                    categoryButtons.forEach(b => b.classList.remove('active'));
+                    // Set clicked button as active
+                    btn.classList.add('active');
 
-                packageCards.forEach(card => {
-                    // If "All" is selected, show everything
-                    if (category === 'all') {
-                        card.style.display = 'block';
-                    } else {
-                        // Check if card has the class matching the category
-                        card.style.display = card.classList.contains(category) ? 'block' : 'none';
-                    }
+                    const category = btn.getAttribute('data-category');
+
+                    packageCards.forEach(card => {
+                        // If "All" is selected, show everything
+                        if (category === 'all') {
+                            card.style.display = 'block';
+                        } else {
+                            // Check if card has the class matching the category
+                            card.style.display = card.classList.contains(category) ? 'block' : 'none';
+                        }
+                    });
                 });
             });
         });
-    });
-</script>
+    </script>
 
 
 </body>

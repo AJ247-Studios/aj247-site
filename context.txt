@@ -1,0 +1,28 @@
+Project: AJ247 Studios Website
+Page: Contact Page or Service Booking Page
+
+Goal:
+I want to build a fully working HTML form using FormSubmit (https://formsubmit.co/).
+This form should send submitted data to my email and redirect users to a thank-you page afterward.
+
+Form Requirements:
+- Method: POST
+- Action: "https://formsubmit.co/YOUR_EMAIL"
+- Input fields: 
+  - name (text)
+  - email (email)
+  - service (select: Videography, Photography, Both)
+  - message (textarea)
+- Hidden fields:
+  - _subject: custom subject for the email
+  - _captcha: false (disable FormSubmit CAPTCHA)
+  - _template: box (better-looking email layout)
+  - _next: redirect to thank-you.html after submission
+
+Bonus:
+- Add required field validation
+- Semantic labels and accessible HTML
+- Use placeholder images if needed
+- Style it with CSS later
+
+Don't use JavaScript or external libraries. This form should be plain HTML + FormSubmit.
