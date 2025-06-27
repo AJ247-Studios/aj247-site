@@ -248,7 +248,7 @@
 
 <section class="form-section">
   <!-- Contact Jo -->
-  <div class="contact-card">
+  <div class="contact-card" id="contact-josiah">
     <h3>📽️ Contact Josiah (Videographer)</h3>
     <form name="contact-jo" method="POST">
       <input type="text" name="name" id="jo-name" placeholder="Your Name" required />
@@ -266,7 +266,7 @@
   </div>
 
   <!-- Contact Photographer -->
-  <div class="contact-card">
+  <div class="contact-card" id="contact-anthony">
     <h3>📸 Contact Anthony (Photographer)</h3>
     <form name="contact-alex" method="POST">
       <input type="text" name="name" id="alex-name" placeholder="Your Name" required />
@@ -284,7 +284,7 @@
   </div>
 
   <!-- Book Both -->
-  <div class="contact-card">
+  <div class="contact-card" id="contact-all">
     <h3>🤝 Book Both Creators</h3>
     <form name="book-both" method="POST">
       <input type="text" name="name" id="both-name" placeholder="Your Name" required />
@@ -332,6 +332,39 @@
   </p>
   <p>© 2025 AJ247 Studios. All rights reserved.</p>
 </footer>
+
+<script>
+// Contact block visibility logic
+(function() {
+  function show(id) {
+    var el = document.getElementById(id);
+    if (el) el.style.display = '';
+  }
+  function hide(id) {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  }
+  var params = new URLSearchParams(window.location.search);
+  var name = (params.get('name') || '').toLowerCase();
+  // Hide all by default
+  hide('contact-all');
+  hide('contact-josiah');
+  hide('contact-anthony');
+  if (!name) {
+    show('contact-all');
+  } else if (name === 'josiah') {
+    show('contact-josiah');
+  } else if (name === 'anthony') {
+    show('contact-anthony');
+  } else if (name === 'both') {
+    show('contact-josiah');
+    show('contact-anthony');
+  } else {
+    // fallback: show all
+    show('contact-all');
+  }
+})();
+</script>
 
 </body>
 </html>

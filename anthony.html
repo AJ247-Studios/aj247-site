@@ -616,40 +616,47 @@
 
         /* Footer */
         footer {
-            background-color: var(--charcoal);
-            color: var(--cream);
-            padding: 3rem 2rem;
-            text-align: center;
+            background-color: #1C1C1E;
+            color: #F9F8F4;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 2rem;
-            text-align: left;
+            align-items: start;
+            padding: 2rem 1rem;
         }
 
         .footer-logo {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 2rem;
-            color: var(--cream);
-            margin-bottom: 1rem;
+            color: #F9F8F4;
+            letter-spacing: 2px;
         }
 
         .footer-logo span {
-            color: var(--gold);
+            color: #D4AF37;
         }
 
         .footer-links h3 {
-            font-size: 1.3rem;
+            font-family: 'Bebas Neue', sans-serif;
+            color: #D4AF37;
+            font-size: 1.1rem;
             margin-bottom: 1rem;
-            color: var(--gold);
+            letter-spacing: 1px;
         }
 
         .footer-links ul {
             list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
         .footer-links li {
@@ -657,36 +664,38 @@
         }
 
         .footer-links a {
-            color: var(--cream);
+            color: #F9F8F4;
             text-decoration: none;
+            font-weight: 500;
             transition: color 0.3s;
         }
 
         .footer-links a:hover {
-            color: var(--gold);
+            color: #D4AF37;
         }
 
         .social-links {
             display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
+            gap: 1.2rem;
         }
 
         .social-links a {
-            color: var(--cream);
-            font-size: 1.5rem;
+            color: #F9F8F4;
+            font-size: 1.6rem;
             transition: color 0.3s;
         }
 
         .social-links a:hover {
-            color: var(--gold);
+            color: #D4AF37;
         }
 
         .copyright {
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.9rem;
+            text-align: center;
+            padding: 1.5rem 1rem 0.5rem 1rem;
+            font-size: 0.95rem;
+            color: #F9F8F4;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            margin-top: 1.5rem;
         }
 
         /* Responsive */
@@ -724,7 +733,45 @@
             .section-title {
                 font-size: 2rem;
             }
+
+            .footer-content {
+                grid-template-columns: 1fr !important;
+                text-align: center;
+            }
+
+            .footer-logo, .footer-links, .social-links {
+                align-items: center !important;
+                justify-content: center !important;
+            }
+
+            .footer-links ul {
+                align-items: center !important;
+            }
         }
+
+        .custom-package-note {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left: 4px solid var(--gold);
+            padding: 1rem 1.5rem;
+            margin: 0 auto 2rem auto;
+            max-width: 800px;
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--cream);
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .custom-package-note a {
+            color: var(--gold);
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        .custom-package-note a:hover {
+            color: var(--cream);
+        }
+
     </style>
 </head>
 <body>
@@ -805,6 +852,15 @@
                 <button class="category-btn" data-category="camps">Camps</button>
                 <button class="category-btn" data-category="graduation">Graduation</button>
             </div>
+
+            <div class="custom-package-note">
+                <p>
+                    <strong>💡 Not sure what to book?</strong>
+                    Just <a href="#booking">send us your budget</a> and some details — we’ll help tailor the perfect package for your needs.
+                </p>
+            </div>
+
+
         <div class="package-grid">
             <!-- Concert Packages -->
             <div class="package-card concert">
@@ -815,7 +871,7 @@
                     <li>20 edited photos</li>
                     <li>Artist & crowd</li>
                 </ul>
-                <a href="contact.html?package=StandardConcert%20Concert" class="package-btn">Book Now</a>
+                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
             </div>
             <div class="package-card concert">
                 <h3>Standard Concert</h3>
@@ -825,7 +881,7 @@
                     <li>50+ photos</li>
                     <li>Artist & crowd</li>
                 </ul>
-                <a href="contact.html?package=StandardConcert%20Concert" class="package-btn">Book Now</a>
+                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
             </div>
             <div class="package-card concert">
                 <h3>Tour Premium</h3>
@@ -834,7 +890,7 @@
                     <li>Full event coverage</li>
                     <li>100+ photos</li>
                 </ul>
-                <a href="contact.html?package=TourPremium%20Concert" class="package-btn">Book Now</a>
+                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
             </div>
 
             <!-- Sports Packages -->
@@ -845,7 +901,7 @@
                     <li>1 match half</li>
                     <li>10–15 action shots</li>
                 </ul>
-                <a href="contact.html?package=BasicGame%20Sports" class="package-btn">Book Now</a>
+                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
             </div>
             <div class="package-card sports">
                 <h3>Full Game</h3>
@@ -855,7 +911,7 @@
                     <li>30+ images</li>
                     <li>Team photo</li>
                 </ul>
-                <a href="contact.html?package=FullGame%20Sports" class="package-btn">Book Now</a>
+                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
             </div>
             <div class="package-card sports">
                 <h3>Tournament Day</h3>
@@ -865,7 +921,7 @@
                     <li>80+ images</li>
                     <li>Teams + detail shots</li>
                 </ul>
-                <a href="contact.html?package=TournamentDay%20Sports" class="package-btn">Book Now</a>
+                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
             </div>
 
             <!-- Camps -->
@@ -877,7 +933,7 @@
                     <li>Candids & group</li>
                     <li>30 edited shots</li>
                 </ul>
-                <a href="#" class="package-btn">Book Now</a>
+                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
             </div>
             <div class="package-card camps">
                 <h3>Half-Day Camp</h3>
@@ -887,7 +943,7 @@
                     <li>Portraits + action</li>
                     <li>70+ images</li>
                 </ul>
-                <a href="#" class="package-btn">Book Now</a>
+                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
             </div>
             <div class="package-card camps">
                 <h3>Camp Full Story</h3>
@@ -896,7 +952,7 @@
                     <li>Full/multi-day shoot</li>
                     <li>200+ photos</li>
                 </ul>
-                <a href="#" class="package-btn">Book Now</a>
+                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
             </div>
 
             <!-- Wedding Packages -->
@@ -908,7 +964,7 @@
                     <li>100 photos</li>
                     <li>USB delivery</li>
                 </ul>
-                <a href="#" class="package-btn">Book Now</a>
+                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
             </div>
             <div class="package-card wedding">
                 <h3>Full Day</h3>
@@ -918,7 +974,7 @@
                     <li>200 photos</li>
                     <li>USB drive</li>
                 </ul>
-                <a href="#" class="package-btn">Book Now</a>
+                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
             </div>
             <div class="package-card wedding">
                 <h3>Deluxe Wedding</h3>
@@ -928,7 +984,7 @@
                     <li>300 photos</li>
                     <li>USB drive</li>
                 </ul>
-                <a href="#" class="package-btn">Book Now</a>
+                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
             </div>
 
             <!-- Engagement -->
@@ -940,7 +996,7 @@
                     <li>20 photos</li>
                     <li>USB drive</li>
                 </ul>
-                <a href="#" class="package-btn">Book Now</a>
+                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
             </div>
 
             <!-- Graduation / School Events -->
@@ -951,7 +1007,7 @@
                     <li>30 mins session</li>
                     <li>15 edited shots</li>
                 </ul>
-                <a href="#" class="package-btn">Book Now</a>
+                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
             </div>
             <div class="package-card graduation">
                 <h3>Prom Night</h3>
@@ -961,7 +1017,7 @@
                     <li>100+ pictures</li>
                     <li>USB drive</li>
                 </ul>
-                <a href="#" class="package-btn">Book Now</a>
+                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
             </div>
             <div class="package-card graduation">
                 <h3>School Day Event</h3>
@@ -972,7 +1028,7 @@
                     <li>Group + activity</li>
                     <li>USB drive</li>
                 </ul>
-                <a href="#" class="package-btn">Book Now</a>
+                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
             </div>
 
             <!-- Family Packages (styled as portrait too) -->
@@ -983,7 +1039,7 @@
                     <li>30 mins session</li>
                     <li>20 photos</li>
                 </ul>
-                <a href="#" class="package-btn">Book Now</a>
+                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
             </div>
             <div class="package-card family">
                 <h3>Full Family</h3>
@@ -993,7 +1049,7 @@
                     <li>30 photos</li>
                     <li>USB drive</li>
                 </ul>
-                <a href="#" class="package-btn">Book Now</a>
+                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
             </div>
             <div class="package-card family">
                 <h3>Birthday Package</h3>
@@ -1003,7 +1059,7 @@
                     <li>50+ photos</li>
                     <li>USB drive</li>
                 </ul>
-                <a href="#" class="package-btn">Book Now</a>
+                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
             </div>
 
             <!-- Portraits -->
@@ -1015,7 +1071,7 @@
                     <li>15 edited photos</li>
                     <li>Indoor or outdoor</li>
                 </ul>
-                <a href="#" class="package-btn">Book Now</a>
+                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
             </div>
             <div class="package-card portrait">
                 <h3>Standard Portrait</h3>
@@ -1025,7 +1081,7 @@
                     <li>30 edited photos</li>
                     <li>Outfit changes</li>
                 </ul>
-                <a href="#" class="package-btn">Book Now</a>
+                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
             </div>
             <div class="package-card portrait">
                 <h3>Deluxe Portrait</h3>
@@ -1036,7 +1092,7 @@
                     <li>Multiple locations</li>
                     <li>USB drive</li>
                 </ul>
-                <a href="#" class="package-btn">Book Now</a>
+                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
             </div>
 
         </div>
@@ -1071,79 +1127,103 @@
 
     <!-- Contact/Booking Form Section -->
     <section class="section contact" id="booking">
-        <h2 class="section-title">Book a Service / Contact</h2>
-        <form class="contact-form" method="POST" action="https://formsubmit.co/YOUR_EMAIL">
+        <h2 class="section-title">Book a Photography Service / Contact</h2>
+        <form class="contact-form" method="POST" action="https://formsubmit.co/jobangles4life@gmail.com" onsubmit="return validateEmails();">
             <div class="form-group">
-                <label for="name">Name</label>
+                <label for="name">Name<span aria-hidden="true" style="color:var(--gold);">*</span></label>
                 <input type="text" id="name" name="name" required placeholder="Your Name" autocomplete="name">
             </div>
             <div class="form-group">
-                <label for="email">Email</label>
+                <label for="email">Email<span aria-hidden="true" style="color:var(--gold);">*</span></label>
                 <input type="email" id="email" name="email" required placeholder="your@email.com" autocomplete="email">
             </div>
             <div class="form-group">
-                <label for="service">Service</label>
-                <select id="service" name="service" required>
-                    <option value="" disabled selected>Select a service</option>
-                    <option value="Videography">Videography</option>
-                    <option value="Photography">Photography</option>
-                    <option value="Both">Both</option>
+                <label for="confirm_email">Confirm Email<span aria-hidden="true" style="color:var(--gold);">*</span></label>
+                <input type="email" id="confirm_email" name="confirm_email" required placeholder="Re-enter your email" autocomplete="email">
+            </div>
+            <div class="form-group">
+                <label for="shoot_type">Shoot Type</label>
+                <select id="shoot_type" name="shoot_type" required>
+                    <option value="" disabled selected>Select a shoot type</option>
+                    <option value="Weddings">Weddings</option>
+                    <option value="Concerts">Concerts</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Portraits">Portraits</option>
+                    <option value="Family">Family</option>
+                    <option value="Other">Other</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" required placeholder="Tell us about your project or inquiry..."></textarea>
+                <label for="event_date">Event Date</label>
+                <input type="date" id="event_date" name="event_date">
+            </div>
+            <div class="form-group">
+                <label for="budget">Estimated Budget</label>
+                <input type="text" id="budget" name="budget" placeholder="e.g. 1000 zł">
+            </div>
+            <div class="form-group">
+                <label for="message">Notes / Message</label>
+                <textarea id="message" name="message" placeholder="Tell us about your project or inquiry..."></textarea>
             </div>
             <!-- Hidden Fields for FormSubmit -->
-            <input type="hidden" name="_subject" value="New Booking/Contact Request from AJ247 Studios Website">
+            <input type="hidden" name="_subject" value="New Photography Inquiry – AJ247 Studios">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="box">
             <input type="hidden" name="_next" value="thank-you.html">
             <button type="submit" class="submit-btn">Send Message</button>
         </form>
+        <script>
+        function validateEmails() {
+            var email = document.getElementById('email').value.trim();
+            var confirm = document.getElementById('confirm_email').value.trim();
+            if(email !== confirm) {
+                alert('Email addresses do not match. Please check and try again.');
+                return false;
+            }
+            return true;
+        }
+        </script>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">
-                AJ<span>247</span> Studios
+    <footer style="background-color: #1C1C1E; color: #F9F8F4; font-family: 'Montserrat', sans-serif;">
+        <div class="footer-content" style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:2rem; align-items:start; padding:2rem 1rem;">
+            <div style="display:flex; flex-direction:column; align-items:flex-start; gap:1rem;">
+                <div class="footer-logo" style="font-family:'Bebas Neue',sans-serif; font-size:2rem; color:#F9F8F4; letter-spacing:2px;">
+                    AJ<span style="color:#D4AF37;">247</span> Studios
+                </div>
+                <div style="font-size:1rem; color:#F9F8F4; opacity:0.8; word-break:break-all;">
+                    <i class="fas fa-envelope" style="color:#D4AF37; margin-right:0.5em;"></i> jobangles4life@gmail.com
+                </div>
             </div>
-            <div class="footer-links">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="josiah.html">Videography</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+            <nav class="footer-links" aria-label="Footer Navigation">
+                <h3 style="font-family:'Bebas Neue',sans-serif; color:#D4AF37; font-size:1.1rem; margin-bottom:1rem; letter-spacing:1px;">Quick Links</h3>
+                <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.5rem;">
+                    <li><a href="index.html" style="color:#F9F8F4; text-decoration:none; font-weight:500;">Home</a></li>
+                    <li><a href="josiah.html" style="color:#F9F8F4; text-decoration:none; font-weight:500;">Videographer</a></li>
+                    <li><a href="anthony.html" style="color:#F9F8F4; text-decoration:none; font-weight:500;">Photographer</a></li>
+                    <li><a href="contact.html" style="color:#F9F8F4; text-decoration:none; font-weight:500;">Contact</a></li>
+                    <li><a href="about.html" style="color:#F9F8F4; text-decoration:none; font-weight:500;">About</a></li>
                 </ul>
-            </div>
-            <div class="footer-links">
-                <h3>Services</h3>
-                <ul>
-                    <li><a href="#packages">Photography Packages</a></li>
-                    <li><a href="album_photo_football.html">Sports Photography</a></li>
-                    <li><a href="album_photo_portraits.html">Portrait Photography</a></li>
-                    <li><a href="album_photo_motocross.html">Motocross Photography</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h3>Legal</h3>
-                <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                </ul>
+            </nav>
+            <div style="display:flex; flex-direction:column; align-items:flex-start; gap:1rem;">
+                <h3 style="font-family:'Bebas Neue',sans-serif; color:#1DAAA4; font-size:1.1rem; margin-bottom:1rem; letter-spacing:1px;">Connect</h3>
+                <div class="social-links" style="display:flex; gap:1.2rem;">
+                    <a href="#" aria-label="Instagram" style="color:#F9F8F4; font-size:1.6rem; transition:color 0.3s;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube" style="color:#F9F8F4; font-size:1.6rem; transition:color 0.3s;"><i class="fab fa-youtube"></i></a>
+                </div>
             </div>
         </div>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <div style="text-align:center; padding:1.5rem 1rem 0.5rem 1rem; font-size:0.95rem; color:#F9F8F4; border-top:1px solid rgba(255,255,255,0.08); margin-top:1.5rem;">
+            © 2025 AJ247 Studios. All rights reserved.
         </div>
-        <div class="copyright">
-            &copy; 2023 AJ247 Studios. All rights reserved.
-        </div>
+        <style>
+            @media (max-width: 700px) {
+                .footer-content { grid-template-columns:1fr !important; text-align:center; }
+                .footer-logo, .footer-links, .social-links { align-items:center !important; justify-content:center !important; }
+                .footer-links ul { align-items:center !important; }
+            }
+        </style>
     </footer>
 
     <script>
