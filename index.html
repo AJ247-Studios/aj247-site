@@ -649,6 +649,15 @@
             z-index: 9999;
             cursor: pointer;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: bottom 0.4s cubic-bezier(.4,0,.2,1), right 0.4s cubic-bezier(.4,0,.2,1), opacity 0.3s, transform 0.4s cubic-bezier(.4,0,.2,1);
+        }
+
+        /* When chat is open, move toggle button above send button */
+        #aj247-chat-container.active ~ #chat-toggle-btn {
+            position: absolute;
+            right: 20px;
+            bottom: 90px; /* above send button */
+            z-index: 10000;
         }
 
         #aj247-chat-container {
@@ -759,8 +768,6 @@
     </style>
 </head>
 <body>
-    <div id="chat-toggle-btn">💬</div>
-
     <div id="aj247-chat-container">
         <div id="aj247-chat-widget">
             <div id="chat-header">💬 AJ247 Assistant</div>
@@ -771,6 +778,7 @@
             </div>
         </div>
     </div>
+    <div id="chat-toggle-btn">💬</div>
 
     <!-- Header/Navigation -->
     <header>
@@ -921,8 +929,8 @@
         <h2>Book Us Solo or Together</h2>
         <p>We offer individual photo/video services or full coverage for your story.</p>
         <div class="booking-btns">
-            <a href="#" class="booking-btn video-btn"><i class="fas fa-video"></i> Hire Just Josiah (Video)</a>
-            <a href="#" class="booking-btn photo-btn"><i class="fas fa-camera"></i> Hire Just Anthony (Photo)</a>
+            <a href="#" class="booking-btn video-btn"><i class="fas fa-video"></i> Hire only Josiah (Video)</a>
+            <a href="#" class="booking-btn photo-btn"><i class="fas fa-camera"></i> Hire only Anthony (Photo)</a>
             <a href="#" class="booking-btn duo-btn"><i class="fas fa-handshake"></i> Book the Duo</a>
         </div>
     </section>
@@ -981,6 +989,44 @@ function appendMessage(sender, message) {
             hamburger.classList.remove('active');
         }
         chatContainer.classList.toggle('active');
+
+        // Move the chat button above the send button when chat is open
+        if (chatContainer.classList.contains('active')) {
+            // Animate out, then move, then animate in
+            toggleBtn.style.opacity = '0';
+            toggleBtn.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                const chatInputBar = document.getElementById('chat-input-bar');
+                chatInputBar.parentNode.insertBefore(toggleBtn, chatInputBar);
+                toggleBtn.style.position = 'absolute';
+                toggleBtn.style.right = '20px';
+                toggleBtn.style.bottom = '90px';
+                toggleBtn.style.margin = '';
+                toggleBtn.style.zIndex = '10000';
+                // Animate in
+                setTimeout(() => {
+                    toggleBtn.style.opacity = '1';
+                    toggleBtn.style.transform = 'scale(1)';
+                }, 10);
+            }, 200);
+        } else {
+            // Animate out, then move, then animate in
+            toggleBtn.style.opacity = '0';
+            toggleBtn.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                document.body.appendChild(toggleBtn);
+                toggleBtn.style.position = '';
+                toggleBtn.style.margin = '';
+                toggleBtn.style.right = '';
+                toggleBtn.style.bottom = '';
+                toggleBtn.style.zIndex = '';
+                // Animate in
+                setTimeout(() => {
+                    toggleBtn.style.opacity = '1';
+                    toggleBtn.style.transform = 'scale(1)';
+                }, 10);
+            }, 200);
+        }
     });
 
     // Mobile menu burger logic
@@ -991,6 +1037,21 @@ function appendMessage(sender, message) {
         // If chat is open, close it before opening menu
         if (chatContainer.classList.contains('active')) {
             chatContainer.classList.remove('active');
+            // Restore chat button to body with animation
+            toggleBtn.style.opacity = '0';
+            toggleBtn.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                document.body.appendChild(toggleBtn);
+                toggleBtn.style.position = '';
+                toggleBtn.style.margin = '';
+                toggleBtn.style.right = '';
+                toggleBtn.style.bottom = '';
+                toggleBtn.style.zIndex = '';
+                setTimeout(() => {
+                    toggleBtn.style.opacity = '1';
+                    toggleBtn.style.transform = 'scale(1)';
+                }, 10);
+            }, 200);
         }
         navMenu.classList.toggle('active');
         hamburger.classList.toggle('active');
