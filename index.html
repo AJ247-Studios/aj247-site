@@ -108,6 +108,10 @@
             cursor: pointer;
             color: white;
             font-size: 1.5rem;
+            position: absolute;
+            top: 1.2rem;
+            right: 2rem;
+            z-index: 1100;
         }
 
         /* Hero Section */
@@ -506,27 +510,75 @@
         @media (max-width: 768px) {
             .hamburger {
                 display: block;
+                position: absolute;
+                top: 1.2rem;
+                right: 2rem;
+                z-index: 1100;
             }
 
             nav ul {
-                position: fixed;
-                top: 80px;
-                left: -100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
                 width: 100%;
-                height: calc(100vh - 80px);
                 background-color: var(--charcoal);
                 flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                transition: left 0.3s;
+                align-items: flex-start;
+                justify-content: flex-start;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+                border-bottom-left-radius: 0.5rem;
+                border-bottom-right-radius: 0.5rem;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s cubic-bezier(.4,0,.2,1);
+                z-index: 999;
             }
 
             nav ul.active {
-                left: 0;
+                max-height: 400px;
+                /* enough for 6-7 links */
+                transition: max-height 0.3s cubic-bezier(.4,0,.2,1);
             }
 
             nav ul li {
-                margin: 1rem 0;
+                margin: 0;
+                width: 100%;
+            }
+            nav ul li a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100vw;
+                min-width: 0;
+                min-height: 56px;
+                padding: 1rem 0;
+                font-size: 1.2rem;
+                background: none;
+                border: none;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                font-weight: 600;
+                transition: background 0.2s, color 0.2s;
+                cursor: pointer;
+            }
+            nav ul li a:hover, nav ul li a:focus {
+                background: var(--gold);
+                color: var(--charcoal);
+            }
+            nav ul li .nav-btn {
+                background: var(--teal);
+                color: white;
+                border-radius: 0;
+                font-size: 1.2rem;
+                width: 100vw;
+                min-height: 56px;
+                padding: 1rem 0;
+                margin: 0;
+            }
+            nav ul li .nav-btn:hover, nav ul li .nav-btn:focus {
+                background: var(--gold);
+                color: var(--charcoal);
             }
 
             .hero h1 {
@@ -579,9 +631,115 @@
         .delay-3 {
             animation-delay: 0.6s;
         }
+
+        #chat-toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--gold);
+            color: var(--charcoal);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #aj247-chat-container {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            z-index: 9998;
+            pointer-events: none;
+        }
+
+        #aj247-chat-widget {
+            width: 320px;
+            height: 400px;
+            max-height: 90vh;
+            background: #1a1a1a;
+            color: white;
+            border-radius: 20px;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0,0,0,0.6);
+            transform: scale(0);
+            transform-origin: bottom right;
+            transition: transform 0.4s ease, width 0.4s ease, height 0.4s ease;
+            pointer-events: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #aj247-chat-container.active #aj247-chat-widget {
+            transform: scale(1);
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+        }
+
+        #chat-header {
+        background: #e6007e;
+        padding: 12px;
+        text-align: center;
+        font-weight: bold;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        }
+
+        #chat-log {
+            flex: 1 1 auto;
+            overflow-y: auto;
+            padding: 10px;
+            font-size: 14px;
+            min-height: 0;
+            max-height: unset;
+        }
+
+        #chat-input-bar {
+            width: 100%;
+            background: #111;
+            border-top: 1px solid #333;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        #chat-input {
+            width: 100%;
+            border: none;
+            padding: 10px;
+            outline: none;
+            font-size: 14px;
+            background-color: #111;
+            color: white;
+        }
     </style>
 </head>
 <body>
+    <div id="chat-toggle-btn">💬</div>
+
+    <div id="aj247-chat-container">
+        <div id="aj247-chat-widget">
+            <div id="chat-header">💬 AJ247 Assistant</div>
+            <div id="chat-log"></div>
+            <div id="chat-input-bar">
+                <input type="text" id="chat-input" placeholder="Ask me anything..." />
+            </div>
+        </div>
+    </div>
+
     <!-- Header/Navigation -->
     <header>
         <a href="#" class="logo">AJ<span>247</span> Studios</a>
@@ -737,5 +895,71 @@
         </div>
     </section>
 
-   
+    <script>
+    const chatLog = document.getElementById('chat-log');
+    const chatInput = document.getElementById('chat-input');
+
+    function appendMessage(sender, message) {
+        const msgDiv = document.createElement('div');
+        msgDiv.style.marginBottom = '12px';
+        msgDiv.innerHTML = `<strong>${sender}:</strong> ${message.replace(/\n/g, '<br>')}`;
+        chatLog.appendChild(msgDiv);
+        chatLog.scrollTop = chatLog.scrollHeight;
+    }
+
+    chatInput.addEventListener('keydown', async (e) => {
+        if (e.key === 'Enter' && chatInput.value.trim()) {
+            const userMsg = chatInput.value.trim();
+            appendMessage('You', userMsg);
+            chatInput.value = '';
+            try {
+                const response = await fetch('http://localhost:8000/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ user_input: userMsg })
+                });
+                const data = await response.json();
+                appendMessage('Ximi', data.reply);
+            } catch (error) {
+                appendMessage('Ximi', '⚠️ Sorry, I am offline or having trouble connecting.');
+            }
+        }
+    });
+
+    const toggleBtn = document.getElementById('chat-toggle-btn');
+    const chatContainer = document.getElementById('aj247-chat-container');
+    toggleBtn.addEventListener('click', () => {
+        // If mobile menu is open, close it before opening chat
+        if (navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+        }
+        chatContainer.classList.toggle('active');
+    });
+
+    // Mobile menu burger logic
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', () => {
+        // If chat is open, close it before opening menu
+        if (chatContainer.classList.contains('active')) {
+            chatContainer.classList.remove('active');
+        }
+        navMenu.classList.toggle('active');
+        hamburger.classList.toggle('active');
+    });
+
+    // Close mobile menu when a link is clicked
+    const navLinks = navMenu.querySelectorAll('a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+        });
+    });
+    </script>
+
+
+</body> 
 </html>

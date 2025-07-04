@@ -70,22 +70,18 @@
             display: flex;
             list-style: none;
         }
-
-        nav li {
+        nav ul li {
             margin-left: 1.5rem;
         }
-
-        nav a {
+        nav ul li a {
             color: var(--cream);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
         }
-
-        nav a:hover {
+        nav ul li a:hover {
             color: var(--gold);
         }
-
         .cta-button {
             background-color: var(--gold);
             color: var(--charcoal);
@@ -94,16 +90,97 @@
             font-weight: 600;
             transition: all 0.3s;
         }
-
         .cta-button:hover {
             background-color: var(--cream);
             transform: translateY(-2px);
         }
 
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            color: var(--cream);
+            font-size: 1.5rem;
+            position: absolute;
+            top: 1.2rem;
+            right: 2rem;
+            z-index: 1100;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+                position: absolute;
+                top: 1.2rem;
+                right: 2rem;
+                z-index: 1100;
+            }
+            nav ul {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--charcoal);
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+                border-bottom-left-radius: 0.5rem;
+                border-bottom-right-radius: 0.5rem;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s cubic-bezier(.4,0,.2,1);
+                z-index: 999;
+            }
+            nav ul.active {
+                max-height: 400px;
+                transition: max-height 0.3s cubic-bezier(.4,0,.2,1);
+            }
+            nav ul li {
+                margin: 0;
+                width: 100%;
+            }
+            nav ul li a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100vw;
+                min-width: 0;
+                min-height: 56px;
+                padding: 1rem 0;
+                font-size: 1.2rem;
+                background: none;
+                border: none;
+                color: var(--cream);
+                text-align: center;
+                text-decoration: none;
+                font-weight: 600;
+                transition: background 0.2s, color 0.2s;
+                cursor: pointer;
+            }
+            nav ul li a:hover, nav ul li a:focus {
+                background: var(--gold);
+                color: var(--charcoal);
+            }
+            nav ul li .cta-button {
+                background: var(--teal);
+                color: white;
+                border-radius: 0;
+                font-size: 1.2rem;
+                width: 100vw;
+                min-height: 56px;
+                padding: 1rem 0;
+                margin: 0;
+            }
+            nav ul li .cta-button:hover, nav ul li .cta-button:focus {
+                background: var(--gold);
+                color: var(--charcoal);
+            }
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(28, 28, 30, 0.7), rgba(28, 28, 30, 0.7)), 
-                url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+                url('background_photo.webp') no-repeat center center/cover;
             height: 80vh;
             display: flex;
             flex-direction: column;
@@ -748,46 +825,109 @@
                 align-items: center !important;
             }
         }
-
-        .custom-package-note {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-left: 4px solid var(--gold);
-            padding: 1rem 1.5rem;
-            margin: 0 auto 2rem auto;
-            max-width: 800px;
-            font-size: 1.05rem;
-            font-weight: 500;
-            color: var(--cream);
-            border-radius: 4px;
-            text-align: center;
-        }
-
-        .custom-package-note a {
-            color: var(--gold);
-            text-decoration: underline;
-            font-weight: 600;
-        }
-
-        .custom-package-note a:hover {
-            color: var(--cream);
-        }
-
     </style>
 </head>
 <body>
+    <!-- AI Chat Toggle Button -->
+    <div id="chat-toggle-btn">💬</div>
+
+    <div id="aj247-chat-container">
+        <div id="aj247-chat-widget">
+            <div id="chat-header">💬 AJ247 Assistant</div>
+            <div id="chat-log"></div>
+            <div id="chat-input-bar">
+                <input type="text" id="chat-input" placeholder="Ask me anything..." />
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header>
         <a href="index.html" class="logo">AJ<span>247</span> Studios</a>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
         <nav>
-            <ul>
+            <ul id="nav-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="josiah.html">Videography</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="contact.html#booking" class="cta-button">Book Now</a></li>
+                <li><a href="contact.html" class="cta-button">Book Now</a></li>
             </ul>
         </nav>
     </header>
+    <script>
+    // --- AI Chat Assistant & Mobile Menu Logic (copied from index.html, unified) ---
+    (function() {
+        // Chat logic
+        const chatLog = document.getElementById('chat-log');
+        const chatInput = document.getElementById('chat-input');
+        const toggleBtn = document.getElementById('chat-toggle-btn');
+        const chatContainer = document.getElementById('aj247-chat-container');
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        function appendMessage(sender, message) {
+            const msgDiv = document.createElement('div');
+            msgDiv.style.marginBottom = '12px';
+            msgDiv.innerHTML = `<strong>${sender}:</strong> ${message.replace(/\n/g, '<br>')}`;
+            chatLog.appendChild(msgDiv);
+            chatLog.scrollTop = chatLog.scrollHeight;
+        }
+        chatInput.addEventListener('keydown', async (e) => {
+            if (e.key === 'Enter' && chatInput.value.trim()) {
+                const userMsg = chatInput.value.trim();
+                appendMessage('You', userMsg);
+                chatInput.value = '';
+                try {
+                    // Replace with your backend endpoint if needed
+                    // const response = await fetch('http://localhost:8000/chat', {
+                    //     method: 'POST',
+                    //     headers: { 'Content-Type': 'application/json' },
+                    //     body: JSON.stringify({ user_input: userMsg })
+                    // });
+                    // const data = await response.json();
+                    // appendMessage('Ximi', data.reply);
+                    appendMessage('Ximi', '⚡️ (AI backend not connected in this demo)');
+                } catch (error) {
+                    appendMessage('Ximi', '⚠️ Sorry, I am offline or having trouble connecting.');
+                }
+            }
+        });
+        // Toggle chat (close menu if open)
+        toggleBtn.addEventListener('click', () => {
+            if (navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+            chatContainer.classList.toggle('active');
+        });
+        // Toggle mobile menu (close chat if open)
+        hamburger.addEventListener('click', () => {
+            if (chatContainer.classList.contains('active')) {
+                chatContainer.classList.remove('active');
+            }
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+        // Close mobile menu when a link is clicked
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+        // Responsive nav: show/hide nav on resize
+        function handleResize() {
+            if (window.innerWidth > 768) {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        }
+        window.addEventListener('resize', handleResize);
+    })();
+    </script>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -852,15 +992,6 @@
                 <button class="category-btn" data-category="camps">Camps</button>
                 <button class="category-btn" data-category="graduation">Graduation</button>
             </div>
-
-            <div class="custom-package-note">
-                <p>
-                    <strong>💡 Not sure what to book?</strong>
-                    Just <a href="#booking">send us your budget</a> and some details — we’ll help tailor the perfect package for your needs.
-                </p>
-            </div>
-
-
         <div class="package-grid">
             <!-- Concert Packages -->
             <div class="package-card concert">
@@ -871,7 +1002,7 @@
                     <li>20 edited photos</li>
                     <li>Artist & crowd</li>
                 </ul>
-                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
+                <a href="contact.html?package=StandardConcert%20Concert" class="package-btn">Book Now</a>
             </div>
             <div class="package-card concert">
                 <h3>Standard Concert</h3>
@@ -881,7 +1012,7 @@
                     <li>50+ photos</li>
                     <li>Artist & crowd</li>
                 </ul>
-                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
+                <a href="contact.html?package=StandardConcert%20Concert" class="package-btn">Book Now</a>
             </div>
             <div class="package-card concert">
                 <h3>Tour Premium</h3>
@@ -890,7 +1021,7 @@
                     <li>Full event coverage</li>
                     <li>100+ photos</li>
                 </ul>
-                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
+                <a href="contact.html?package=TourPremium%20Concert" class="package-btn">Book Now</a>
             </div>
 
             <!-- Sports Packages -->
@@ -901,7 +1032,7 @@
                     <li>1 match half</li>
                     <li>10–15 action shots</li>
                 </ul>
-                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
+                <a href="contact.html?package=BasicGame%20Sports" class="package-btn">Book Now</a>
             </div>
             <div class="package-card sports">
                 <h3>Full Game</h3>
@@ -911,7 +1042,7 @@
                     <li>30+ images</li>
                     <li>Team photo</li>
                 </ul>
-                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
+                <a href="contact.html?package=FullGame%20Sports" class="package-btn">Book Now</a>
             </div>
             <div class="package-card sports">
                 <h3>Tournament Day</h3>
@@ -921,7 +1052,7 @@
                     <li>80+ images</li>
                     <li>Teams + detail shots</li>
                 </ul>
-                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
+                <a href="contact.html?package=TournamentDay%20Sports" class="package-btn">Book Now</a>
             </div>
 
             <!-- Camps -->
@@ -933,7 +1064,7 @@
                     <li>Candids & group</li>
                     <li>30 edited shots</li>
                 </ul>
-                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
+                <a href="#" class="package-btn">Book Now</a>
             </div>
             <div class="package-card camps">
                 <h3>Half-Day Camp</h3>
@@ -943,7 +1074,7 @@
                     <li>Portraits + action</li>
                     <li>70+ images</li>
                 </ul>
-                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
+                <a href="#" class="package-btn">Book Now</a>
             </div>
             <div class="package-card camps">
                 <h3>Camp Full Story</h3>
@@ -952,7 +1083,7 @@
                     <li>Full/multi-day shoot</li>
                     <li>200+ photos</li>
                 </ul>
-                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
+                <a href="#" class="package-btn">Book Now</a>
             </div>
 
             <!-- Wedding Packages -->
@@ -964,7 +1095,7 @@
                     <li>100 photos</li>
                     <li>USB delivery</li>
                 </ul>
-                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
+                <a href="#" class="package-btn">Book Now</a>
             </div>
             <div class="package-card wedding">
                 <h3>Full Day</h3>
@@ -974,7 +1105,7 @@
                     <li>200 photos</li>
                     <li>USB drive</li>
                 </ul>
-                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
+                <a href="#" class="package-btn">Book Now</a>
             </div>
             <div class="package-card wedding">
                 <h3>Deluxe Wedding</h3>
@@ -984,7 +1115,7 @@
                     <li>300 photos</li>
                     <li>USB drive</li>
                 </ul>
-                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
+                <a href="#" class="package-btn">Book Now</a>
             </div>
 
             <!-- Engagement -->
@@ -996,7 +1127,7 @@
                     <li>20 photos</li>
                     <li>USB drive</li>
                 </ul>
-                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
+                <a href="#" class="package-btn">Book Now</a>
             </div>
 
             <!-- Graduation / School Events -->
@@ -1007,7 +1138,7 @@
                     <li>30 mins session</li>
                     <li>15 edited shots</li>
                 </ul>
-                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
+                <a href="#" class="package-btn">Book Now</a>
             </div>
             <div class="package-card graduation">
                 <h3>Prom Night</h3>
@@ -1017,7 +1148,7 @@
                     <li>100+ pictures</li>
                     <li>USB drive</li>
                 </ul>
-                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
+                <a href="#" class="package-btn">Book Now</a>
             </div>
             <div class="package-card graduation">
                 <h3>School Day Event</h3>
@@ -1028,7 +1159,7 @@
                     <li>Group + activity</li>
                     <li>USB drive</li>
                 </ul>
-                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
+                <a href="#" class="package-btn">Book Now</a>
             </div>
 
             <!-- Family Packages (styled as portrait too) -->
@@ -1039,7 +1170,7 @@
                     <li>30 mins session</li>
                     <li>20 photos</li>
                 </ul>
-                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
+                <a href="#" class="package-btn">Book Now</a>
             </div>
             <div class="package-card family">
                 <h3>Full Family</h3>
@@ -1049,7 +1180,7 @@
                     <li>30 photos</li>
                     <li>USB drive</li>
                 </ul>
-                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
+                <a href="#" class="package-btn">Book Now</a>
             </div>
             <div class="package-card family">
                 <h3>Birthday Package</h3>
@@ -1059,7 +1190,7 @@
                     <li>50+ photos</li>
                     <li>USB drive</li>
                 </ul>
-                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
+                <a href="#" class="package-btn">Book Now</a>
             </div>
 
             <!-- Portraits -->
@@ -1071,7 +1202,7 @@
                     <li>15 edited photos</li>
                     <li>Indoor or outdoor</li>
                 </ul>
-                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
+                <a href="#" class="package-btn">Book Now</a>
             </div>
             <div class="package-card portrait">
                 <h3>Standard Portrait</h3>
@@ -1081,7 +1212,7 @@
                     <li>30 edited photos</li>
                     <li>Outfit changes</li>
                 </ul>
-                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
+                <a href="#" class="package-btn">Book Now</a>
             </div>
             <div class="package-card portrait">
                 <h3>Deluxe Portrait</h3>
@@ -1092,7 +1223,7 @@
                     <li>Multiple locations</li>
                     <li>USB drive</li>
                 </ul>
-                <a href="contact.html?name=anthony" class="package-btn">Book Now</a>
+                <a href="#" class="package-btn">Book Now</a>
             </div>
 
         </div>
@@ -1193,7 +1324,7 @@
                     AJ<span style="color:#D4AF37;">247</span> Studios
                 </div>
                 <div style="font-size:1rem; color:#F9F8F4; opacity:0.8; word-break:break-all;">
-                    <i class="fas fa-envelope" style="color:#D4AF37; margin-right:0.5em;"></i> jobangles4life@gmail.com
+                    <i class="fas fa-envelope" style="color:#D4AF37; margin-right:0.5em;"></i> aj247studios@gmail.com
                 </div>
             </div>
             <nav class="footer-links" aria-label="Footer Navigation">
@@ -1210,7 +1341,7 @@
                 <h3 style="font-family:'Bebas Neue',sans-serif; color:#1DAAA4; font-size:1.1rem; margin-bottom:1rem; letter-spacing:1px;">Connect</h3>
                 <div class="social-links" style="display:flex; gap:1.2rem;">
                     <a href="#" aria-label="Instagram" style="color:#F9F8F4; font-size:1.6rem; transition:color 0.3s;"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="YouTube" style="color:#F9F8F4; font-size:1.6rem; transition:color 0.3s;"><i class="fab fa-youtube"></i></a>
+                    <a href="https://youtube.com/@aj247studios-b8y?si=ssWsrdiQwXzljWR6" aria-label="YouTube" style="color:#F9F8F4; font-size:1.6rem; transition:color 0.3s;"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
         </div>

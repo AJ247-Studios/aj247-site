@@ -573,6 +573,10 @@
 
             .hamburger {
                 display: block;
+                position: absolute;
+                top: 1.2rem;
+                right: 2rem;
+                z-index: 1100;
             }
 
             .hero h1 {
@@ -628,6 +632,94 @@
 
         .delay-3 {
             animation-delay: 0.6s;
+        }
+
+        /* Chat Widget Styles */
+        #chat-toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--gold);
+            color: var(--charcoal);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        #aj247-chat-container {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            z-index: 9998;
+            pointer-events: none;
+        }
+        #aj247-chat-widget {
+            width: 320px;
+            height: 400px;
+            max-height: 90vh;
+            background: #1a1a1a;
+            color: white;
+            border-radius: 20px;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0,0,0,0.6);
+            transform: scale(0);
+            transform-origin: bottom right;
+            transition: transform 0.4s ease, width 0.4s ease, height 0.4s ease;
+            pointer-events: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        #aj247-chat-container.active #aj247-chat-widget {
+            transform: scale(1);
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+        }
+        #chat-header {
+            background: #e6007e;
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+        #chat-log {
+            flex: 1 1 auto;
+            overflow-y: auto;
+            padding: 10px;
+            font-size: 14px;
+            min-height: 0;
+            max-height: unset;
+        }
+        #chat-input-bar {
+            width: 100%;
+            background: #111;
+            border-top: 1px solid #333;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+        #chat-input {
+            width: 100%;
+            border: none;
+            padding: 10px;
+            outline: none;
+            font-size: 14px;
+            background-color: #111;
+            color: white;
         }
     </style>
 </head>
@@ -795,5 +887,297 @@
                 </div>
             </div>
             <div class="package-card" data-category="concerts">
-                <
+                <div class="package-header">
+                    <h3>Full Concert Film</h3>
+                    <div class="package-price">600 zł</div>
+                </div>
+                <div class="package-body">
+                    <ul class="package-features">
+                        <li>3 camera angles</li>
+                        <li>1 hour of footage</li>
+                        <li>Professional audio mixing</li>
+                        <li>2 revisions</li>
+                    </ul>
+                    <a href="#contact" class="btn">Inquire Now</a>
+                </div>
+            </div>
+            <!-- Sports Packages -->
+            <div class="package-card" data-category="sports">
+                <div class="package-header">
+                    <h3>Highlight Reel</h3>
+                    <div class="package-price">300 zł</div>
+                </div>
+                <div class="package-body">
+                    <ul class="package-features">
+                        <li>2–3 min highlight video</li>
+                        <li>Up to 2 hours of event coverage</li>
+                        <li>Slow-motion and replays</li>
+                        <li>1 revision</li>
+                    </ul>
+                    <a href="#contact" class="btn">Inquire Now</a>
+                </div>
+            </div>
+            <div class="package-card" data-category="sports">
+                <div class="package-header">
+                    <h3>Full Event Coverage</h3>
+                    <div class="package-price">1000 zł</div>
+                </div>
+                <div class="package-body">
+                    <ul class="package-features">
+                        <li>Up to 8 hours of coverage</li>
+                        <li>Interviews with athletes</li>
+                        <li>Drone footage (if applicable)</li>
+                        <li>2 revisions</li>
+                    </ul>
+                    <a href="#contact" class="btn">Inquire Now</a>
+                </div>
+            </div>
+            <!-- Business Packages -->
+            <div class="package-card" data-category="business">
+                <div class="package-header">
+                    <h3>Promo Video</h3>
+                    <div class="package-price">500 zł</div>
+                </div>
+                <div class="package-body">
+                    <ul class="package-features">
+                        <li>1–2 min promotional video</li>
+                        <li>Scriptwriting assistance</li>
+                        <li>Basic animations and graphics</li>
+                        <li>1 revision</li>
+                    </ul>
+                    <a href="#contact" class="btn">Inquire Now</a>
+                </div>
+            </div>
+            <div class="package-card" data-category="business">
+                <div class="package-header">
+                    <h3>Corporate Event Coverage</h3>
+                    <div class="package-price">1500 zł</div>
+                </div>
+                <div class="package-body">
+                    <ul class="package-features">
+                        <li>Up to 6 hours of coverage</li>
+                        <li>Multi-camera setup</li>
+                        <li>Professional audio recording</li>
+                        <li>2 revisions</li>
+                    </ul>
+                    <a href="#contact" class="btn">Inquire Now</a>
+                </div>
+            </div>
+            <!-- Event Packages -->
+            <div class="package-card" data-category="events">
+                <div class="package-header">
+                    <h3>Basic Event Package</h3>
+                    <div class="package-price">400 zł</div>
+                </div>
+                <div class="package-body">
+                    <ul class="package-features">
+                        <li>Up to 4 hours of coverage</li>
+                        <li>1 camera angle</li>
+                        <li>Online gallery for video delivery</li>
+                        <li>1 revision</li>
+                    </ul>
+                    <a href="#contact" class="btn">Inquire Now</a>
+                </div>
+            </div>
+            <div class="package-card" data-category="events">
+                <div class="package-header">
+                    <h3>Standard Event Package</h3>
+                    <div class="package-price">800 zł</div>
+                </div>
+                <div class="package-body">
+                    <ul class="package-features">
+                        <li>Up to 6 hours of coverage</li>
+                        <li>2 camera angles</li>
+                        <li>Drone footage (if location allows)</li>
+                        <li>2 revisions</li>
+                    </ul>
+                    <a href="#contact" class="btn">Inquire Now</a>
+                </div>
+            </div>
+            <div class="package-card" data-category="events">
+                <div class="package-header">
+                    <h3>Premium Event Package</h3>
+                    <div class="package-price">1500 zł</div>
+                </div>
+                <div class="package-body">
+                    <ul class="package-features">
+                        <li>Full day coverage</li>
+                        <li>3 camera angles</li>
+                        <li>Professional audio and lighting</li>
+                        <li>Highlight reel + full video</li>
+                        <li>3 revisions</li>
+                    </ul>
+                    <a href="#contact" class="btn">Inquire Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Hire Section -->
+    <section class="section why-hire">
+        <h2 class="section-title">Why Hire AJ247 Studios?</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-video"></i>
+                </div>
+                <h3>Professional Quality</h3>
+                <p>We use top-of-the-line equipment and techniques to ensure your video looks stunning.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>Timely Delivery</h3>
+                <p>We understand the importance of deadlines and guarantee on-time delivery of your project.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>Excellent Support</h3>
+                <p>Our team is dedicated to providing you with the best support throughout the entire process.</p>
+            </div>
+        </div>
+        <div class="testimonial animate delay-1">
+            <p>"AJ247 Studios did an amazing job with our wedding video. They captured every moment perfectly!"</p>
+            <div class="testimonial-author">- Happy Couple</div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <h2 class="section-title">Get in Touch</h2>
+        <p>If you have any questions or would like to book a session, feel free to contact us!</p>
+        <div class="contact-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" class="form-control" placeholder="Your Name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="form-control" placeholder="Your Email">
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" class="form-control" rows="4" placeholder="Your Message"></textarea>
+            </div>
+            <button class="btn submit-btn">Send Message</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">AJ<span>247</span> Studios</div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="anthony.html">Photography</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#packages">Videography Packages</a></li>
+                    <li><a href="#portfolio">Portfolio Highlights</a></li>
+                    <li><a href="#contact">Book Now</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Follow Us</h4>
+                <ul class="social-links">
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 AJ247 Studios. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div id="chat-toggle-btn">💬</div>
+    <div id="aj247-chat-container">
+        <div id="aj247-chat-widget">
+            <div id="chat-header">💬 AJ247 Assistant</div>
+            <div id="chat-log"></div>
+            <div id="chat-input-bar">
+                <input type="text" id="chat-input" placeholder="Ask me anything..." />
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Chat widget logic
+        const chatLog = document.getElementById('chat-log');
+        const chatInput = document.getElementById('chat-input');
+        function appendMessage(sender, message) {
+            const msgDiv = document.createElement('div');
+            msgDiv.style.marginBottom = '12px';
+            msgDiv.innerHTML = `<strong>${sender}:</strong> ${message.replace(/\n/g, '<br>')}`;
+            chatLog.appendChild(msgDiv);
+            chatLog.scrollTop = chatLog.scrollHeight;
+        }
+        chatInput.addEventListener('keydown', async (e) => {
+            if (e.key === 'Enter' && chatInput.value.trim()) {
+                const userMsg = chatInput.value.trim();
+                appendMessage('You', userMsg);
+                chatInput.value = '';
+                try {
+                    const response = await fetch('http://localhost:8000/chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ user_input: userMsg })
+                    });
+                    const data = await response.json();
+                    appendMessage('Ximi', data.reply);
+                } catch (error) {
+                    appendMessage('Ximi', '⚠️ Sorry, I am offline or having trouble connecting.');
+                }
+            }
+        });
+        const toggleBtn = document.getElementById('chat-toggle-btn');
+        const chatContainer = document.getElementById('aj247-chat-container');
+        toggleBtn.addEventListener('click', () => {
+            chatContainer.classList.toggle('active');
+        });
+        // Burger menu logic
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+        // Close mobile menu when a link is clicked
+        const navLinkItems = navLinks.querySelectorAll('a');
+        navLinkItems.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+    </script>
+</body>
 </html>
+<!--
+Burger Icon Positioning:
+The .hamburger icon was set to position: absolute; top: 1.2rem; right: 2rem; and given a high z-index so it always appears at the top right of the header on mobile.
+
+Show/Hide Logic:
+JavaScript was added so that clicking the burger icon toggles the active class on the navigation menu (.nav-links) and the burger icon itself. This slides the menu in and out on mobile.
+
+Menu Close on Link Click:
+When any navigation link is clicked, the menu and burger icon both lose their active class, closing the menu automatically.
+
+CSS for Mobile:
+The mobile styles ensure the navigation slides in from the left and overlays the page, while the burger icon remains visible and clickable at the top right.
+
+These changes make the mobile menu open and close smoothly, and ensure the burger icon is always in the expected top-right position.
+-->

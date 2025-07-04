@@ -97,6 +97,11 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       break-inside: avoid;
       transition: transform 0.3s ease;
+      /* Make images larger */
+      width: 100%;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .gallery-item:hover {
@@ -106,6 +111,27 @@
     .gallery-item img {
       width: 100%;
       display: block;
+      height: auto;
+      min-height: 350px;
+      object-fit: cover;
+    }
+
+    @media (max-width: 992px) {
+      .gallery {
+        column-count: 2;
+      }
+      .gallery-item img {
+        min-height: 250px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .gallery {
+        column-count: 1;
+      }
+      .gallery-item img {
+        min-height: 180px;
+      }
     }
 
     .caption {
@@ -119,33 +145,111 @@
       background: var(--charcoal);
       color: var(--cream);
       text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
+      padding: 2.5rem 1rem 1rem 1rem;
+      font-size: 1rem;
+      border-top: 2px solid var(--gold);
+      margin-top: 3rem;
     }
 
-    footer a {
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a {
       color: var(--gold);
       margin: 0 0.5rem;
       text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: color 0.3s;
     }
 
-    footer a:hover {
+    .footer-links a:hover {
       color: var(--teal);
     }
 
-    @media (max-width: 992px) {
-      .gallery {
-        column-count: 2;
-      }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .copyright {
+      color: #bbb;
+      font-size: 0.95rem;
+      margin-top: 1rem;
     }
 
     @media (max-width: 600px) {
-      .gallery {
-        column-count: 1;
+      .footer-links {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+
+    /* Mobile Menu */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      position: absolute;
+      top: 1.2rem;
+      right: 2rem;
+      z-index: 1100;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--charcoal);
+        flex-direction: column;
+        padding: 1rem 0;
       }
 
-      .intro h1 {
-        font-size: 2rem;
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links li {
+        margin: 0;
+        text-align: center;
+        padding: 0.5rem 0;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: var(--charcoal);
+        padding: 1rem 0;
+        z-index: 100;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      nav a {
+        padding: 0.5rem 1rem;
+        width: 100%;
+        text-align: center;
       }
     }
   </style>
@@ -155,11 +259,14 @@
 <header>
   <a href="index.html" class="logo">AJ<span>247</span> Studios</a>
   <nav>
-    <ul>
+    <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="josiah.html">Videography</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
+    <div class="hamburger">
+      <i class="fas fa-bars"></i>
+    </div>
   </nav>
 </header>
 
@@ -168,55 +275,196 @@
   <p>A battle of pride and passion — where every moment, every movement echoed with heart. Football in its rawest, realest form.</p>
 </section>
 
+
 <section class="gallery">
   <div class="gallery-item">
-    <img src="sports/football_01.webp" alt="football" />
-    <div class="caption">      </div>
+    <img src="sports/football_01.webp" alt="football" class="fullscreenable" />
+    <div class="caption"></div>
   </div>
   <div class="gallery-item">
-    <img src="sports/football_02.webp" alt="football" />
-    <div class="caption">      </div>
+    <img src="sports/football_02.webp" alt="football" class="fullscreenable" />
+    <div class="caption"></div>
   </div>
   <div class="gallery-item">
-    <img src="sports/football_03.webp" alt="football" />
-    <div class="caption">      </div>
+    <img src="sports/football_03.webp" alt="football" class="fullscreenable" />
+    <div class="caption"></div>
   </div>
   <div class="gallery-item">
-    <img src="sports/football_04.webp" alt="football" />
-    <div class="caption">      </div>
+    <img src="sports/football_04.webp" alt="football" class="fullscreenable" />
+    <div class="caption"></div>
   </div>
   <div class="gallery-item">
-    <img src="sports/football_05.webp" alt="football" />
-    <div class="caption">      </div>
+    <img src="sports/football_05.webp" alt="football" class="fullscreenable" />
+    <div class="caption"></div>
   </div>
   <div class="gallery-item">
-    <img src="sports/football_06.webp" alt="football" />
-    <div class="caption">      </div>
+    <img src="sports/football_06.webp" alt="football" class="fullscreenable" />
+    <div class="caption"></div>
   </div>
   <div class="gallery-item">
-    <img src="sports/football_08.webp" alt="football" />
-    <div class="caption">      </div>
+    <img src="sports/football_08.webp" alt="football" class="fullscreenable" />
+    <div class="caption"></div>
   </div>
-    <div class="gallery-item">
-    <img src="sports/football_09.webp" alt="football" />
-    <div class="caption">      </div>
+  <div class="gallery-item">
+    <img src="sports/football_09.webp" alt="football" class="fullscreenable" />
+    <div class="caption"></div>
   </div>
-    <div class="gallery-item">
-    <img src="sports/football_10.webp" alt="football" />
-    <div class="caption">      </div>
+  <div class="gallery-item">
+    <img src="sports/football_10.webp" alt="football" class="fullscreenable" />
+    <div class="caption"></div>
   </div>
 </section>
 
 <footer>
-  <p>AJ247 Studios – Telling Your Story Frame by Frame</p>
-  <p>
-    <a href="index.html">Home</a> |
-    <a href="josiah.html">Videography</a> |
-    <a href="anthony.html">Photography</a> |
+  <span class="footer-logo">AJ<span>247</span> Studios</span>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="josiah.html">Videography</a>
+    <a href="anthony.html">Photography</a>
     <a href="contact.html">Contact</a>
-  </p>
-  <p>© 2025 AJ247 Studios. All rights reserved.</p>
+  </div>
+  <div class="copyright">© 2025 AJ247 Studios. All rights reserved.<br>Telling Your Story Frame by Frame</div>
 </footer>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+<script>
+// Burger menu logic
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+  hamburger.classList.toggle('active');
+});
+
+// Close mobile menu when a link is clicked
+const navLinkItems = navLinks.querySelectorAll('a');
+navLinkItems.forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    hamburger.classList.remove('active');
+  });
+});
+
+// Fullscreen gallery logic
+// Adds a fullscreen overlay for images with smooth transition
+const fullscreenableImages = document.querySelectorAll('.fullscreenable');
+let fullscreenOverlay = null;
+
+fullscreenableImages.forEach(img => {
+  img.style.cursor = 'zoom-in';
+  img.addEventListener('click', function() {
+    if (fullscreenOverlay) return;
+    fullscreenOverlay = document.createElement('div');
+    fullscreenOverlay.className = 'fullscreen-overlay';
+    fullscreenOverlay.innerHTML = `
+      <img src="${img.src}" alt="${img.alt}" class="fullscreen-img" />
+      <button class="close-fullscreen" aria-label="Close fullscreen"><i class="fas fa-times"></i></button>
+    `;
+    document.body.appendChild(fullscreenOverlay);
+    setTimeout(() => fullscreenOverlay.classList.add('active'), 10);
+
+    // Close on overlay click or button click
+    fullscreenOverlay.addEventListener('click', e => {
+      if (e.target === fullscreenOverlay || e.target.classList.contains('close-fullscreen') || e.target.closest('.close-fullscreen')) {
+        fullscreenOverlay.classList.remove('active');
+        setTimeout(() => {
+          fullscreenOverlay.remove();
+          fullscreenOverlay = null;
+        }, 300);
+      }
+    });
+    // Prevent click on image from closing
+    fullscreenOverlay.querySelector('.fullscreen-img').addEventListener('click', e => e.stopPropagation());
+  });
+});
+</script>
+
+
+<style>
+/* Fullscreen overlay for gallery images */
+.fullscreen-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(28,28,30,0.96);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2000;
+  transition: opacity 0.3s cubic-bezier(.4,0,.2,1);
+}
+.fullscreen-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.fullscreen-img {
+  max-width: 92vw;
+  max-height: 88vh;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+  background: #fff;
+  object-fit: contain;
+  animation: zoomIn 0.3s cubic-bezier(.4,0,.2,1);
+}
+@keyframes zoomIn {
+  from { transform: scale(0.92); opacity: 0.7; }
+  to { transform: scale(1); opacity: 1; }
+}
+.close-fullscreen {
+  position: absolute;
+  top: 2.5rem;
+  right: 2.5rem;
+  background: rgba(28,28,30,0.7);
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2100;
+  transition: background 0.2s;
+}
+.close-fullscreen:hover {
+  background: rgba(212,175,55,0.9);
+  color: var(--charcoal);
+}
+@media (max-width: 600px) {
+  .close-fullscreen {
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    width: 2rem;
+    height: 2rem;
+  }
+  .fullscreen-img {
+    max-width: 98vw;
+    max-height: 80vh;
+  }
+}
+</style>
 
 </body>
 </html>
+
+<!--
+Burger Icon Positioning:
+The .hamburger icon was set to position: absolute; top: 1.2rem; right: 2rem; and given a high z-index so it always appears at the top right of the header on mobile.
+
+Show/Hide Logic:
+JavaScript was added so that clicking the burger icon toggles the active class on the navigation menu (.nav-links) and the burger icon itself. This slides the menu in and out on mobile.
+
+Menu Close on Link Click:
+When any navigation link is clicked, the menu and burger icon both lose their active class, closing the menu automatically.
+
+CSS for Mobile:
+The mobile styles ensure the navigation slides in from the left and overlays the page, while the burger icon remains visible and clickable at the top right.
+
+These changes make the mobile menu open and close smoothly, and ensure the burger icon is always in the expected top-right position.
+-->
