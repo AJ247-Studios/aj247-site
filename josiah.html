@@ -550,33 +550,78 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--charcoal);
-                flex-direction: column;
-                padding: 1rem 0;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li {
-                margin: 0;
-                text-align: center;
-                padding: 0.5rem 0;
-            }
-
             .hamburger {
                 display: block;
                 position: absolute;
                 top: 1.2rem;
                 right: 2rem;
                 z-index: 1100;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--charcoal);
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+                border-bottom-left-radius: 0.5rem;
+                border-bottom-right-radius: 0.5rem;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s cubic-bezier(.4,0,.2,1);
+                z-index: 999;
+                display: flex;
+            }
+
+            .nav-links.active {
+                max-height: 400px;
+                transition: max-height 0.3s cubic-bezier(.4,0,.2,1);
+            }
+
+            .nav-links li {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+            .nav-links a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100vw;
+                min-width: 0;
+                min-height: 56px;
+                padding: 1rem 0;
+                font-size: 1.2rem;
+                background: none;
+                border: none;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                font-weight: 600;
+                transition: background 0.2s, color 0.2s;
+                cursor: pointer;
+            }
+            .nav-links a:hover, .nav-links a:focus {
+                background: var(--gold);
+                color: var(--charcoal);
+            }
+            .nav-links .cta-button {
+                background: var(--teal);
+                color: white;
+                border-radius: 0;
+                font-size: 1.2rem;
+                width: 100vw;
+                min-height: 56px;
+                padding: 1rem 0;
+                margin: 0;
+            }
+            .nav-links .cta-button:hover, .nav-links .cta-button:focus {
+                background: var(--gold);
+                color: var(--charcoal);
             }
 
             .hero h1 {
@@ -1148,21 +1193,32 @@
         toggleBtn.addEventListener('click', () => {
             chatContainer.classList.toggle('active');
         });
-        // Burger menu logic
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        });
-        // Close mobile menu when a link is clicked
-        const navLinkItems = navLinks.querySelectorAll('a');
-        navLinkItems.forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.classList.remove('active');
+        // --- Mobile Menu Logic (unified with index.html) ---
+        (function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            // Toggle mobile menu
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('active');
             });
-        });
+            // Close mobile menu when a link is clicked
+            const navLinkItems = navLinks.querySelectorAll('a');
+            navLinkItems.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('active');
+                });
+            });
+            // Responsive nav: show/hide nav on resize
+            function handleResize() {
+                if (window.innerWidth > 768) {
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            }
+            window.addEventListener('resize', handleResize);
+        })();
     </script>
 </body>
 </html>

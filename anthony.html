@@ -204,34 +204,73 @@
             }
         }
 
-        /* Hero Section */
+        /* Hero Section (josiah.html style) */
         .hero {
-            background: linear-gradient(rgba(28, 28, 30, 0.7), rgba(28, 28, 30, 0.7)), 
-                url('background_photo.webp') no-repeat center center/cover;
             height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('background_photo.webp') center/cover no-repeat;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: var(--cream);
+            color: white;
             padding: 0 2rem;
+            position: relative;
         }
 
         .hero h1 {
             font-size: 4rem;
             margin-bottom: 1rem;
+            color: var(--gold);
             letter-spacing: 3px;
         }
 
-        .hero .quote {
-            font-size: 1.5rem;
+        .hero p {
+            font-size: 1.2rem;
             max-width: 700px;
             margin-bottom: 2rem;
         }
 
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            background-color: var(--gold);
+            color: var(--charcoal);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--teal);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--gold);
+            color: var(--charcoal);
+        }
+
         .scroll-down {
-            margin-top: 3rem;
+            position: absolute;
+            bottom: 2rem;
+            font-size: 2rem;
+            color: white;
             animation: bounce 2s infinite;
         }
 
@@ -244,6 +283,20 @@
             }
             60% {
                 transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero-btns {
+                flex-direction: column;
+                width: 100%;
+            }
+            .btn {
+                width: 100%;
+                margin-bottom: 1rem;
             }
         }
 
@@ -803,49 +856,39 @@
         }
 
         /* Responsive */
+        /* Removed duplicate/conflicting hero section media queries for clarity and maintainability. */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 3rem;
+                font-size: 3.5rem;
             }
-
             .hero .quote {
                 font-size: 1.2rem;
             }
-
-            /* nav ul { display: none; }  <-- REMOVE this line! */
-
             .gallery {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
-
             .package-grid {
                 grid-template-columns: 1fr;
             }
         }
-
         @media (max-width: 480px) {
             .hero h1 {
                 font-size: 2.5rem;
             }
-
             .section {
                 padding: 3rem 1rem;
             }
-
             .section-title {
                 font-size: 2rem;
             }
-
             .footer-content {
                 grid-template-columns: 1fr !important;
                 text-align: center;
             }
-
             .footer-logo, .footer-links, .social-links {
                 align-items: center !important;
                 justify-content: center !important;
             }
-
             .footer-links ul {
                 align-items: center !important;
             }
@@ -853,18 +896,7 @@
     </style>
 </head>
 <body>
-    <!-- AI Chat Toggle Button -->
-    <div id="chat-toggle-btn">💬</div>
-
-    <div id="aj247-chat-container">
-        <div id="aj247-chat-widget">
-            <div id="chat-header">💬 AJ247 Assistant</div>
-            <div id="chat-log"></div>
-            <div id="chat-input-bar">
-                <input type="text" id="chat-input" placeholder="Ask me anything..." />
-            </div>
-        </div>
-    </div>
+    <!-- AI Chat Assistant removed -->
 
     <!-- Header -->
     <header>
@@ -883,58 +915,12 @@
         </nav>
     </header>
     <script>
-    // --- AI Chat Assistant & Mobile Menu Logic (copied from index.html, unified) ---
+    // --- Mobile Menu Logic Only ---
     (function() {
-        // Chat logic
-        const chatLog = document.getElementById('chat-log');
-        const chatInput = document.getElementById('chat-input');
-        const toggleBtn = document.getElementById('chat-toggle-btn');
-        const chatContainer = document.getElementById('aj247-chat-container');
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
-        function appendMessage(sender, message) {
-            const msgDiv = document.createElement('div');
-            msgDiv.style.marginBottom = '12px';
-            let senderClass = '';
-            if (sender === 'You') senderClass = 'chat-sender-user';
-            else if (sender === 'Ximi') senderClass = 'chat-sender-ai';
-            msgDiv.innerHTML = `<span class="${senderClass}">${sender}:</span> ${message.replace(/\n/g, '<br>')}`;
-            chatLog.appendChild(msgDiv);
-            chatLog.scrollTop = chatLog.scrollHeight;
-        }
-        chatInput.addEventListener('keydown', async (e) => {
-            if (e.key === 'Enter' && chatInput.value.trim()) {
-                const userMsg = chatInput.value.trim();
-                appendMessage('You', userMsg);
-                chatInput.value = '';
-                try {
-                    // Replace with your backend endpoint if needed
-                    // const response = await fetch('http://localhost:8000/chat', {
-                    //     method: 'POST',
-                    //     headers: { 'Content-Type': 'application/json' },
-                    //     body: JSON.stringify({ user_input: userMsg })
-                    // });
-                    // const data = await response.json();
-                    // appendMessage('Ximi', data.reply);
-                    appendMessage('Ximi', '⚡️ (AI backend not connected in this demo)');
-                } catch (error) {
-                    appendMessage('Ximi', '⚠️ Sorry, I am offline or having trouble connecting.');
-                }
-            }
-        });
-        // Toggle chat (close menu if open)
-        toggleBtn.addEventListener('click', () => {
-            if (navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-                hamburger.classList.remove('active');
-            }
-            chatContainer.classList.toggle('active');
-        });
-        // Toggle mobile menu (close chat if open)
+        // Toggle mobile menu
         hamburger.addEventListener('click', () => {
-            if (chatContainer.classList.contains('active')) {
-                chatContainer.classList.remove('active');
-            }
             navMenu.classList.toggle('active');
             hamburger.classList.toggle('active');
         });
@@ -959,11 +945,15 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Timeless Photography by AJ247</h1>
-        <p class="quote">From fleeting glances to grand emotions — captured frame by frame.</p>
-        <div class="scroll-down">
-            <i class="fas fa-chevron-down fa-2x"></i>
+        <h1 class="animate">Timeless Photography by AJ247</h1>
+        <p class="animate delay-1">From fleeting glances to grand emotions — captured frame by frame.</p>
+        <div class="hero-btns animate delay-2">
+            <a href="#portfolio" class="btn">View Portfolio</a>
+            <a href="#packages" class="btn btn-outline">See Packages</a>
         </div>
+        <a href="#portfolio" class="scroll-down animate delay-3">
+            <i class="fas fa-chevron-down"></i>
+        </a>
     </section>
 
     <!-- Gallery Section -->
