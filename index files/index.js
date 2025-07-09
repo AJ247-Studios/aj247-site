@@ -191,7 +191,7 @@ toggleBtn.addEventListener('click', () => {
             chatInputBar.parentNode.insertBefore(toggleBtn, chatInputBar);
             toggleBtn.style.position = 'absolute';
             toggleBtn.style.right = '20px';
-            toggleBtn.style.bottom = '60px';
+            toggleBtn.style.bottom = '100px';
             toggleBtn.style.margin = '';
             toggleBtn.style.zIndex = '10000';
             setTimeout(() => {

@@ -545,7 +545,7 @@ footer {
 }
 #chat-toggle-btn {
     position: fixed;
-    bottom: 20px;
+    bottom: 80px;
     right: 20px;
     background-color: var(--charcoal);
     color: var(--charcoal);
@@ -648,7 +648,7 @@ footer {
 }
 #aj247-chat-container.active #aj247-chat-widget {
     transform: scale(1);
-    width: 380px;
+    width: 400px;
     height: 560px;
     border-radius: 20px;
     bottom: 90px;
