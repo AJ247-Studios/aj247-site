@@ -157,19 +157,33 @@ clearHistoryBtn.addEventListener("click", () => {
 
 // Close chat
 document.getElementById("chat-close-btn").addEventListener("click", () => {
-    document.getElementById("aj247-chat-container").classList.remove("active");
-});
+    chatContainer.classList.remove("active");
+    document.body.classList.remove('lock-scroll'); // unlock scroll
 
+    // Move toggle button back to body and make visible
+    document.body.appendChild(toggleBtn);
+    toggleBtn.style.position = '';
+    toggleBtn.style.right = '';
+    toggleBtn.style.bottom = '';
+    toggleBtn.style.margin = '';
+    toggleBtn.style.zIndex = '';
+    toggleBtn.style.opacity = '1';
+    toggleBtn.style.transform = 'scale(1)';
+});
 // Toggle chat
 const toggleBtn = document.getElementById('chat-toggle-btn');
 const chatContainer = document.getElementById('aj247-chat-container');
+// Inside your toggle button click event listener
 toggleBtn.addEventListener('click', () => {
     if (navMenu.classList.contains('active')) {
         navMenu.classList.remove('active');
         hamburger.classList.remove('active');
     }
     chatContainer.classList.toggle('active');
+
     if (chatContainer.classList.contains('active')) {
+        document.body.classList.add('lock-scroll'); // lock scroll
+
         toggleBtn.style.opacity = '0';
         toggleBtn.style.transform = 'scale(0.8)';
         setTimeout(() => {
@@ -177,7 +191,7 @@ toggleBtn.addEventListener('click', () => {
             chatInputBar.parentNode.insertBefore(toggleBtn, chatInputBar);
             toggleBtn.style.position = 'absolute';
             toggleBtn.style.right = '20px';
-            toggleBtn.style.bottom = '90px';
+            toggleBtn.style.bottom = '60px';
             toggleBtn.style.margin = '';
             toggleBtn.style.zIndex = '10000';
             setTimeout(() => {
@@ -186,6 +200,8 @@ toggleBtn.addEventListener('click', () => {
             }, 10);
         }, 200);
     } else {
+        document.body.classList.remove('lock-scroll'); // unlock scroll
+
         toggleBtn.style.opacity = '0';
         toggleBtn.style.transform = 'scale(0.8)';
         setTimeout(() => {
@@ -202,6 +218,7 @@ toggleBtn.addEventListener('click', () => {
         }, 200);
     }
 });
+
 
 // Mobile menu burger logic
 const hamburger = document.getElementById('hamburger');
