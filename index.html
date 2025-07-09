@@ -32,6 +32,10 @@
 
             <div id="chat-log"></div>
 
+            <div class="chat-note">
+            ⚠️ Zoe is still learning and improving. Responses may vary.
+            </div>
+
             <div id="chat-input-bar">
                 <input type="text" id="chat-input" placeholder="Ask me anything..." />
                 <button id="chat-send-btn" aria-label="Send">
@@ -41,7 +45,10 @@
         </div>
     </div>
 
-    <div id="chat-toggle-btn">💬</div>
+    <div id="chat-toggle-btn" role="button" tabindex="0" aria-label="Open Chat">
+    <span class="emoji">💬</span>
+    <span class="text">Chat</span>
+    </div>
 
     <!-- Header/Navigation -->
     <header>
@@ -115,6 +122,11 @@
                 <div class="service-icon"><i class="fas fa-briefcase"></i></div>
                 <h3>Promo Videos</h3>
                 <p>Elevating your brand with compelling visual storytelling for businesses.</p>
+            </div>
+            <div class="service-card fade-in delay-2 other">
+                <div class="service-icon"><i class="fas fa-ellipsis-h"></i></div>
+                <h3>Other</h3>
+                <p>Flexible and creative coverage for unique events and special occasions outside our main categories.</p>
             </div>
         </div>
     </section>
@@ -192,9 +204,9 @@
         <h2>Book Us Solo or Together</h2>
         <p>We offer individual photo/video services or full coverage for your story.</p>
         <div class="booking-btns">
-            <a href="#" class="booking-btn video-btn"><i class="fas fa-video"></i> Hire Josiah (Video)</a>
-            <a href="#" class="booking-btn photo-btn"><i class="fas fa-camera"></i> Hire Anthony (Photo)</a>
-            <a href="#" class="booking-btn duo-btn"><i class="fas fa-handshake"></i> Book the Duo</a>
+            <a href="contact.html" class="booking-btn video-btn"><i class="fas fa-video"></i> Hire Josiah (Video)</a>
+            <a href="contact.html" class="booking-btn photo-btn"><i class="fas fa-camera"></i> Hire Anthony (Photo)</a>
+            <a href="contact.html" class="booking-btn duo-btn"><i class="fas fa-handshake"></i> Book the Duo</a>
         </div>
     </section>
 
