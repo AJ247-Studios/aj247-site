@@ -253,3 +253,53 @@ navLinks.forEach(link => {
         hamburger.classList.remove('active');
     });
 });
+
+document.addEventListener('click', (e) => {
+    const navMenu = document.getElementById('nav-menu');
+    const hamburger = document.getElementById('hamburger');
+
+    const clickedInsideMenu = navMenu.contains(e.target);
+    const clickedHamburger = hamburger.contains(e.target);
+
+    if (!clickedInsideMenu && !clickedHamburger && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        hamburger.classList.remove('active');
+    }
+});
+
+
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const toggleBtn = document.getElementById('chat-toggle-btn');
+        toggleBtn.classList.add('show');
+
+        // After it's visible, expand the label
+        setTimeout(() => {
+            toggleBtn.classList.add('expand');
+        }, 500); // wait for the fade-in to finish before expanding
+    }, 1000); // start 1 seconds after page load
+});
+
+window.addEventListener('load', () => {
+  const toggleBtn = document.getElementById('chat-toggle-btn');
+
+  // Step 1: Appear after 1.5s
+  setTimeout(() => {
+    toggleBtn.classList.add('show');
+
+    // Step 2: Expand after another 0.5s
+    setTimeout(() => {
+      toggleBtn.classList.add('expand');
+    }, 500);
+  }, 1500);
+});
+
+window.addEventListener('load', () => {
+  // Wait a moment after load to trigger animations
+  setTimeout(() => {
+    document.querySelectorAll('.fade-in').forEach(el => {
+      el.classList.add('visible');
+    });
+  }, 300); // Adjust if needed
+});
+

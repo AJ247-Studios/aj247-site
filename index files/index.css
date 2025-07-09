@@ -630,7 +630,7 @@ footer {
     pointer-events: none;
 }
 #aj247-chat-widget {
-    width: 320px;
+    width: 340px;
     height: 400px;
     max-height: 90vh;
     background: #1a1a1a;
@@ -740,7 +740,7 @@ footer {
     display: flex;
     flex-direction: column;
     margin-bottom: 12px;
-    max-width: 80%;
+    max-width: 100%;
     }   
 
 .chat-msg-wrapper.left .chat-msg-meta {
@@ -797,7 +797,7 @@ footer {
 }
 .chat-content {
     white-space: pre-wrap;
-    font-size: 14px;
+    font-size: 16px;
 }
 .chat-sender {
     font-size: 0.75rem;
@@ -847,6 +847,15 @@ footer {
     font-weight: 600;
     color: #555;
 }
+
+.chat-msg-sender {  
+    font-size: 0.9rem; /* or bump to 1rem */
+}
+.chat-msg-timestamp {
+    font-size: 0.8rem; /* or bump to 1rem */
+}
+
+
 .chat-msg-timestamp {
     font-style: italic;
     color: #aaa;
@@ -1003,4 +1012,107 @@ body.lock-scroll {
   border-radius: 8px;
   margin: 0.5rem;
   text-align: center;
+}
+
+#chat-toggle-btn {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease,
+        width 0.4s ease;
+}
+
+#chat-toggle-btn .chat-label {
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+    transition: max-width 0.4s ease, margin-left 0.3s ease;
+    margin-left: 0;
+}
+
+#chat-toggle-btn.show {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+#chat-toggle-btn.expand .chat-label {
+    max-width: 100px; /* enough space to show "Chat" */
+    margin-left: 0.5rem;
+}
+
+#chat-toggle-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--charcoal);  /* ← charcoal background */
+  color: white;                       /* ← white text */
+  font-weight: bold;                  /* ← bold letters */
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+  overflow: hidden;
+  transition:
+    width 0.4s ease,
+    border-radius 0.4s ease,
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+#chat-toggle-btn .chat-label {
+  margin-left: 0.5rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Button becomes visible */
+#chat-toggle-btn.show {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* Button expands */
+#chat-toggle-btn.expand {
+  width: 140px;
+  border-radius: 30px;
+  justify-content: flex-start;
+  padding-left: 1rem;
+}
+
+/* Label fades in only when expanded */
+#chat-toggle-btn.expand .chat-label {
+  opacity: 1;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-1 {
+  transition-delay: 0.3s;
+}
+
+.delay-2 {
+  transition-delay: 0.6s;
 }
