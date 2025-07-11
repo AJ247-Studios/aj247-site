@@ -1,4 +1,3 @@
-
 :root {
     --charcoal: #1C1C1E;
     --gold: #D4AF37;
@@ -432,6 +431,26 @@ footer {
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.7);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Chat */
+
+
+
 /* Mobile Styles */
 @media (max-width: 768px) {
     .hamburger {
@@ -1180,4 +1199,82 @@ body[style*="overflow: hidden"] {
 
 body.lock-scroll {
   overflow: hidden;
+}
+
+body.lock-scroll {
+  overflow: hidden;
+  height: 100%;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;  /* <--- Make sure this is here */
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;      /* <--- Important for text centering */
+    line-height: 1.2;        /* Optional, to fix vertical alignment */
+}
+
+/* Footer */
+footer {
+    background-color: var(--charcoal);
+    color: white;
+    padding: 3rem 2rem 1rem;
+}
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+.footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+.footer-logo span {
+    color: var(--gold);
+}
+.footer-links h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--gold);
+}
+.footer-links ul {
+    list-style: none;
+}
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.footer-links a:hover {
+    color: var(--gold);
+}
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.social-links a {
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+.social-links a:hover {
+    color: var(--gold);
+}
+.copyright {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
 }
