@@ -4,367 +4,92 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact Us | AJ247 Studios</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --charcoal: #1C1C1E;
-      --cream: #F9F8F4;
-      --gold: #D4AF37;
-      --teal: #1DAAA4;
-    }
-
-    body {
-      font-family: 'Montserrat', sans-serif;
-      margin: 0;
-      background-color: var(--cream);
-      color: var(--charcoal);
-    }
-
-    h1, h2, h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    /* Header */
-    header {
-      background-color: var(--charcoal);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
-
-    .logo {
-      color: var(--cream);
-      font-size: 2rem;
-      text-decoration: none;
-    }
-
-    .logo span {
-      color: var(--gold);
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    nav a {
-      color: var(--cream);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    nav a:hover {
-      color: var(--gold);
-    }
-
-    /* Intro */
-    .intro {
-      text-align: center;
-      padding: 4rem 2rem 2rem;
-    }
-
-    .intro h1 {
-      font-size: 2.5rem;
-    }
-
-    .intro p {
-      font-size: 1.1rem;
-      margin-top: 1rem;
-      color: #555;
-    }
-
-    /* Forms Section */
-    .form-section {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      padding: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .contact-card {
-      background: white;
-      border-left: 5px solid var(--teal);
-      border-radius: 8px;
-      padding: 2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-
-    .contact-card h3 {
-      margin-bottom: 1rem;
-      color: var(--teal);
-    }
-
-    .contact-card:nth-child(2) {
-      border-left-color: var(--gold);
-    }
-
-    .contact-card:nth-child(3) {
-      border-left-color: var(--charcoal);
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    input, select, textarea {
-      padding: 0.8rem;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-family: 'Montserrat', sans-serif;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-      outline-color: var(--gold);
-    }
-
-    button {
-      padding: 0.8rem;
-      border: none;
-      background-color: var(--teal);
-      color: white;
-      font-weight: 600;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .contact-card:nth-child(2) button {
-      background-color: var(--gold);
-      color: var(--charcoal);
-    }
-
-    .contact-card:nth-child(3) button {
-      background-color: var(--charcoal);
-    }
-
-    button:hover {
-      opacity: 0.9;
-    }
-
-    /* Map Section */
-    .map {
-      margin: 4rem auto;
-      text-align: center;
-      max-width: 100%;
-    }
-
-    .map iframe {
-      width: 90%;
-      height: 300px;
-      border: none;
-      border-radius: 8px;
-    }
-
-    .map p {
-      margin-top: 1rem;
-      font-weight: 500;
-    }
-
-    /* Contact Info */
-    .info {
-      background: var(--charcoal);
-      color: white;
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-
-    .info p, .info a {
-      margin: 0.5rem 0;
-      color: var(--cream);
-      text-decoration: none;
-    }
-
-    .info a:hover {
-      color: var(--gold);
-    }
-
-    .info .socials {
-      margin-top: 1rem;
-      font-size: 1.5rem;
-    }
-
-    .socials a {
-      margin: 0 0.5rem;
-      color: var(--cream);
-    }
-
-    .socials a:hover {
-      color: var(--teal);
-    }
-
-    /* Footer */
-    footer {
-      background: #111;
-      color: #aaa;
-      text-align: center;
-      padding: 2rem 1rem;
-    }
-
-    footer a {
-      color: #ddd;
-      margin: 0 0.5rem;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      color: var(--gold);
-    }
-
-    @media (max-width: 768px) {
-      .form-section {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="contact-files/contact.css">
 </head>
 <body>
 
-<header>
-  <a href="index.html" class="logo">AJ<span>247</span> Studios</a>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="josiah.html">Videography</a></li>
-      <li><a href="anthony.html">Photography</a></li>
-      <li><a href="about.html">About Us</a></li>
-    </ul>
-  </nav>
-</header>
+  <!-- ✅ zoe-chat.html -->
+  <div id="aj247-chat-container">
+      <div id="aj247-chat-widget">
+          <div id="chat-header">
+              <span>💬 Zoe – your assistant</span>
+              <button id="chat-close-btn" aria-label="Close Chat">✖</button>
+          </div>
+          
+          <button id="clear-history-btn" style="
+              background: none;
+              color: white;
+              border: none;
+              font-size: 0.8rem;
+              margin-top: 4px;
+              margin-bottom: 4px;
+              cursor: pointer;
+              text-decoration: underline;
+              opacity: 0.8;
+          ">🗑️ Clear Chat</button>
+          <div id="chat-log"></div>
+          <div class="chat-note">
+          ⚠️ Zoe is still learning and improving. Responses may vary.
+          </div>
+          <div id="chat-input-bar">
+              <input type="text" id="chat-input" placeholder="Ask me anything..." />
+              <button id="chat-send-btn" aria-label="Send">
+                  <i class="fas fa-paper-plane"></i>
+              </button>
+          </div>
+      </div>
+  </div>
+  
+  <button id="chat-toggle-btn">
+  <span class="emoji">💬</span><span class="chat-label">Chat</span>
+  </button>
+  
+    <!-- Header/Navigation -->
+    <header>
+      <a href="index.html" class="logo">AJ<span>247</span> Studios</a>
+      <div class="hamburger" id="hamburger">
+          <i class="fas fa-bars"></i>
+      </div>
+      <nav>
+          <ul id="nav-menu">
+              <li><a href="#home">Home</a></li>
+              <li><a href="josiah.html">Videography</a></li>
+              <li><a href="anthony.html">Photography</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="contact.html#booking" class="nav-btn">Book Now</a></li>
+          </ul>
+      </nav>
+  </header>
 
-<section class="intro">
-  <h1>Let’s Tell Your Story</h1>
-  <p>Whether you need a solo shoot or a full creative team — we’re ready.</p>
-</section>
+  <section class="contact-section fade-in">
+    <h2>Contact Us</h2>
+    <p>Let’s capture something amazing together.</p>
+    
+    <form action="https://formsubmit.co/your@email.com" method="POST">
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" required>
 
-<section class="form-section">
-  <!-- Contact Jo -->
-  <div class="contact-card" id="contact-josiah">
-    <h3>📽️ Contact Josiah (Videographer)</h3>
-    <form name="contact-jo" method="POST">
-      <input type="text" name="name" id="jo-name" placeholder="Your Name" required />
-      <input type="email" name="email" id="jo-email" placeholder="Your Email" required />
-      <select name="event_type" id="jo-event">
-        <option>Wedding</option><option>Concert</option><option>Sports</option><option>Promo</option><option>Portrait</option><option>Other</option>
-      </select>
-      <input type="date" name="date" id="jo-date" />
-      <select name="budget" id="jo-budget">
-        <option>&lt;500 zł</option><option>500–1000 zł</option><option>1000–2000 zł</option><option>2000+ zł</option>
-      </select>
-      <textarea name="message" id="jo-msg" placeholder="Your Message" rows="4"></textarea>
-      <button type="submit">Send to Jo</button>
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" required>
+
+      <label for="message">Message</label>
+      <textarea name="message" id="message" rows="6" required></textarea>
+
+      <!-- Optional FormSubmit hidden fields -->
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+
+      <button type="submit">Send Message</button>
     </form>
-  </div>
+  </section>
 
-  <!-- Contact Photographer -->
-  <div class="contact-card" id="contact-anthony">
-    <h3>📸 Contact Anthony (Photographer)</h3>
-    <form name="contact-alex" method="POST">
-      <input type="text" name="name" id="alex-name" placeholder="Your Name" required />
-      <input type="email" name="email" id="alex-email" placeholder="Your Email" required />
-      <select name="event_type" id="alex-event">
-        <option>Wedding</option><option>Portrait</option><option>Concert</option><option>Family</option><option>School</option><option>Camp</option><option>Other</option>
-      </select>
-      <input type="date" name="date" id="alex-date" />
-      <select name="budget" id="alex-budget">
-        <option>&lt;500 zł</option><option>500–1000 zł</option><option>1000–2000 zł</option><option>2000+ zł</option>
-      </select>
-      <textarea name="message" id="alex-msg" placeholder="Your Message" rows="4"></textarea>
-      <button type="submit">Send to Photographer</button>
-    </form>
-  </div>
+  <script src="contact-files/contact.js"></script>
 
-  <!-- Book Both -->
-  <div class="contact-card" id="contact-all">
-    <h3>🤝 Book Both Creators</h3>
-    <form name="book-both" method="POST">
-      <input type="text" name="name" id="both-name" placeholder="Your Name" required />
-      <input type="email" name="email" id="both-email" placeholder="Your Email" required />
-      <select name="event_type" id="both-event">
-        <option>Wedding</option><option>Concert</option><option>Portrait</option><option>School</option><option>Other</option>
-      </select>
-      <select name="service_type">
-        <option>Both</option><option>Video Only</option><option>Photo Only</option>
-      </select>
-      <select name="contact_method">
-        <option>Email</option><option>Phone</option><option>WhatsApp</option>
-      </select>
-      <input type="date" name="date" id="both-date" />
-      <textarea name="message" id="both-msg" placeholder="Your Message" rows="4"></textarea>
-      <button type="submit">Send to AJ247</button>
-    </form>
-  </div>
-</section>
-
-<section class="map">
-  <iframe src="https://maps.google.com/maps?q=krakow%2C%20Poland&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
-  <p>Based in Krakow — working wherever your story takes us.</p>
-</section>
-
-<section class="info">
-  <p><strong>Email:</strong> <a href="mailto:contact@aj247studios.com">contact@aj247studios.com</a></p>
-  <p><strong>WhatsApp:</strong> +48 000 000 000</p>
-  <p><strong>Instagram:</strong> <a href="https://instagram.com/aj247studios">@aj247studios</a></p>
-  <div class="socials">
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-youtube"></i></a>
-    <a href="#"><i class="fab fa-flickr"></i></a>
-    <a href="mailto:contact@aj247studios.com"><i class="fas fa-envelope"></i></a>
-  </div>
-</section>
-
-<footer>
-  <p><strong>AJ247 Studios</strong> – Telling Your Story Frame by Frame</p>
-  <p>
-    <a href="index.html">Home</a> |
-    <a href="josiah.html">Videography</a> |
-    <a href="anthony.html">Photography</a> |
-    <a href="about.html">About Us</a>
-  </p>
-  <p>© 2025 AJ247 Studios. All rights reserved.</p>
-</footer>
-
-<script>
-// Contact block visibility logic
-(function() {
-  function show(id) {
-    var el = document.getElementById(id);
-    if (el) el.style.display = '';
-  }
-  function hide(id) {
-    var el = document.getElementById(id);
-    if (el) el.style.display = 'none';
-  }
-  var params = new URLSearchParams(window.location.search);
-  var name = (params.get('name') || '').toLowerCase();
-  // Hide all by default
-  hide('contact-all');
-  hide('contact-josiah');
-  hide('contact-anthony');
-  if (!name) {
-    show('contact-all');
-  } else if (name === 'josiah') {
-    show('contact-josiah');
-  } else if (name === 'anthony') {
-    show('contact-anthony');
-  } else if (name === 'both') {
-    show('contact-josiah');
-    show('contact-anthony');
-  } else {
-    // fallback: show all
-    show('contact-all');
-  }
-})();
-</script>
 
 </body>
 </html>

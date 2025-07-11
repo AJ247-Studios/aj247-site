@@ -8,897 +8,50 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        :root {
-            --charcoal: #1C1C1E;
-            --gold: #D4AF37;
-            --teal: #1DAAA4;
-            --cream: #F9F8F4;
-            --blush: #F6D4CB;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--charcoal);
-            line-height: 1.6;
-            background-color: var(--cream);
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Bebas Neue', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: normal;
-        }
-
-        .script-font {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            text-transform: none;
-        }
-
-        /* Header/Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(28, 28, 30, 0.95);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .logo {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem;
-            color: white;
-            text-decoration: none;
-        }
-
-        .logo span {
-            color: var(--gold);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 2rem;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: var(--gold);
-        }
-
-        .cta-button {
-            background-color: var(--gold);
-            color: var(--charcoal);
-            padding: 0.5rem 1.5rem;
-            border-radius: 4px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .cta-button:hover {
-            background-color: var(--teal);
-            color: white;
-        }
-
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            color: white;
-            font-size: 1.5rem;
-            position: absolute;
-            top: 1.2rem;
-            right: 2rem;
-            z-index: 1100;
-        }
-
-        @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-                position: absolute;
-                top: 1.2rem;
-                right: 2rem;
-                z-index: 1100;
-            }
-
-            nav ul {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--charcoal);
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: flex-start;
-                box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-                border-bottom-left-radius: 0.5rem;
-                border-bottom-right-radius: 0.5rem;
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s cubic-bezier(.4,0,.2,1);
-                z-index: 999;
-            }
-
-            nav ul.active {
-                display: flex;
-                max-height: 400px;
-                /* enough for 6-7 links */
-                transition: max-height 0.3s cubic-bezier(.4,0,.2,1);
-            }
-
-            nav ul li {
-                margin: 0;
-                width: 100%;
-            }
-            nav ul li a {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 100vw;
-                min-width: 0;
-                min-height: 56px;
-                padding: 1rem 0;
-                font-size: 1.2rem;
-                background: none;
-                border: none;
-                color: white;
-                text-align: center;
-                text-decoration: none;
-                font-weight: 600;
-                transition: background 0.2s, color 0.2s;
-                cursor: pointer;
-            }
-            nav ul li a:hover, nav ul li a:focus {
-                background: var(--gold);
-                color: var(--charcoal);
-            }
-            nav ul li .cta-button {
-                background: var(--teal);
-                color: white;
-                border-radius: 0;
-                font-size: 1.2rem;
-                width: 100vw;
-                min-height: 56px;
-                padding: 1rem 0;
-                margin: 0;
-            }
-            nav ul li .cta-button:hover, nav ul li .cta-button:focus {
-                background: var(--gold);
-                color: var(--charcoal);
-            }
-
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-
-            .hero .quote {
-                font-size: 1.2rem;
-            }
-
-            .hero-btns {
-                flex-direction: column;
-                width: 100%;
-                max-width: 300px;
-            }
-        }
-
-        /* Hero Section (josiah.html style) */
-        .hero {
-            height: 80vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('other-img/background_photo.webp') center/cover no-repeat;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            padding: 0 2rem;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            color: var(--gold);
-            letter-spacing: 3px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin-bottom: 2rem;
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.6rem 1.5rem;
-            background-color: var(--gold);
-            color: var(--charcoal);
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 4px;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: var(--teal);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--gold);
-            color: var(--gold);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--gold);
-            color: var(--charcoal);
-        }
-
-        .scroll-down {
-            position: absolute;
-            bottom: 2rem;
-            font-size: 2rem;
-            color: white;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-20px);
-            }
-            60% {
-                transform: translateY(-10px);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .hero-btns {
-                flex-direction: column;
-                width: 100%;
-            }
-            .btn {
-                width: 100%;
-                margin-bottom: 1rem;
-            }
-        }
-
-        /* Gallery Section */
-        .section {
-            padding: 5rem 2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--charcoal);
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            aspect-ratio: 4/3;
-            transition: transform 0.3s;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            padding: 1.5rem;
-            color: white;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-
-        .category-tag {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background-color: rgba(0,0,0,0.7);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-
-        .wedding-tag {
-            background-color: var(--gold);
-            color: var(--charcoal);
-        }
-
-        .concert-tag {
-            background-color: var(--teal);
-            color: white;
-        }
-
-        .sports-tag {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .portrait-tag {
-            background-color: var(--blush);
-            color: var(--charcoal);
-        }
-
-        .family-tag {
-            background-color: #FF9800; /* Orange */
-            color: white;
-        }
-
-        .camps-tag {
-            background-color: #3F51B5; /* Indigo/Blue-Purple */
-            color: white;
-        }
-
-        .graduation-tag {
-            background-color: #9C27B0; /* Purple */
-            color: white;
-        }
-
-        /* Packages Section */
-        .packages {
-            background-color: var(--charcoal);
-            color: var(--cream);
-        }
-
-        .packages .section-title {
-            color: var(--cream);
-        }
-
-        .package-categories {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-
-        .category-btn {
-            background: none;
-            border: 2px solid var(--gold);
-            color: var(--gold);
-            padding: 0.5rem 1.5rem;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-        }
-
-        .category-btn:hover, .category-btn.active {
-            background-color: var(--gold);
-            color: var(--charcoal);
-        }
-
-        .package-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .package-card {
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 8px;
-            padding: 2rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .package-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        
-        .package-card.wedding::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background-color: var(--gold);
-        }
-
-        .package-card.concert::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background-color: var(--teal);
-        }
-
-        .package-card.sports::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background-color: #4CAF50;
-        }
-
-        .package-card.portrait::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background-color: var(--blush);
-        }
-
-        .package-card.family::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background-color: #FF9800; /* Orange */
-        }
-
-        .package-card.camps::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background-color: #3F51B5; /* Blue-purple */
-        }
-
-        .package-card.graduation::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background-color: #9C27B0; /* Purple */
-        }
-
-        .package-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--gold);
-        }
-
-        .package-card.concert h3 {
-            color: var(--teal);
-        }
-
-        .package-card.sports h3 {
-            color: #4CAF50;
-        }
-
-        .package-card.portrait h3 {
-            color: var(--blush);
-        }
-
-        .package-card.family h3 {
-            color: #FF9800;
-        }
-
-        .package-card.camps h3 {
-            color: #3F51B5;
-        }
-
-        .package-card.graduation h3 {
-            color: #9C27B0;
-        }
-
-        .package-card.family .package-btn {
-            background-color: #FF9800;
-            color: white;
-        }
-
-        .package-card.camps .package-btn {
-            background-color: #3F51B5;
-            color: white;
-        }
-
-        .package-card.graduation .package-btn {
-            background-color: #9C27B0;
-            color: white;
-        }
-                
-        .package-price {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .package-features {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .package-features li {
-            margin-bottom: 0.5rem;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .package-features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--gold);
-        }
-
-        .package-card.concert .package-features li::before {
-            color: var(--teal);
-        }
-
-        .package-card.sports .package-features li::before {
-            color: #4CAF50;
-        }
-
-        .package-card.portrait .package-features li::before {
-            color: var(--blush);
-        }
-
-        .package-card.family .package-features li::before {
-            color: #FF9800;
-        }
-
-        .package-card.camps .package-features li::before {
-            color: #3F51B5;
-        }
-
-        .package-card.graduation .package-features li::before {
-            color: #9C27B0;
-        }
-                
-        .package-btn {
-            display: inline-block;
-            background-color: var(--gold);
-            color: var(--charcoal);
-            padding: 0.7rem 1.5rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .package-card.concert .package-btn {
-            background-color: var(--teal);
-            color: white;
-        }
-
-        .package-card.sports .package-btn {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .package-card.portrait .package-btn {
-            background-color: var(--blush);
-            color: var(--charcoal);
-        }
-
-        .package-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-        }
-
-        /* Why Choose Section */
-        .why-choose {
-            background-color: var(--cream);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .feature-card {
-            text-align: center;
-            padding: 2rem;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--gold);
-        }
-
-        .feature-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-
-        .testimonial {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            padding: 2rem;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .testimonial .quote {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--charcoal);
-        }
-
-        .testimonial-author {
-            font-weight: 600;
-            color: var(--gold);
-        }
-
-        /* Contact Section */
-        .contact {
-            background-color: var(--charcoal);
-            color: var(--cream);
-        }
-
-        .contact .section-title {
-            color: var(--cream);
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: rgba(255,255,255,0.1);
-            padding: 2rem;
-            border-radius: 8px;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: none;
-            border-radius: 4px;
-            background-color: rgba(255,255,255,0.9);
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background-color: var(--gold);
-            color: var(--charcoal);
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s;
-            width: 100%;
-        }
-
-        .submit-btn:hover {
-            background-color: var(--cream);
-            transform: translateY(-3px);
-        }
-
-        /* Footer */
-        footer {
-            background-color: #1C1C1E;
-            color: #F9F8F4;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2rem;
-            align-items: start;
-            padding: 2rem 1rem;
-        }
-
-        .footer-logo {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem;
-            color: #F9F8F4;
-            letter-spacing: 2px;
-        }
-
-        .footer-logo span {
-            color: #D4AF37;
-        }
-
-        .footer-links h3 {
-            font-family: 'Bebas Neue', sans-serif;
-            color: #D4AF37;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            letter-spacing: 1px;
-        }
-
-        .footer-links ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-links a {
-            color: #F9F8F4;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: #D4AF37;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.2rem;
-        }
-
-        .social-links a {
-            color: #F9F8F4;
-            font-size: 1.6rem;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: #D4AF37;
-        }
-
-        .copyright {
-            text-align: center;
-            padding: 1.5rem 1rem 0.5rem 1rem;
-            font-size: 0.95rem;
-            color: #F9F8F4;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            margin-top: 1.5rem;
-        }
-
-        /* Responsive */
-        /* Removed duplicate/conflicting hero section media queries for clarity and maintainability. */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-            .hero .quote {
-                font-size: 1.2rem;
-            }
-            .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-            .package-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .section {
-                padding: 3rem 1rem;
-            }
-            .section-title {
-                font-size: 2rem;
-            }
-            .footer-content {
-                grid-template-columns: 1fr !important;
-                text-align: center;
-            }
-            .footer-logo, .footer-links, .social-links {
-                align-items: center !important;
-                justify-content: center !important;
-            }
-            .footer-links ul {
-                align-items: center !important;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="anthony files/anthony.css">
 </head>
 <body>
-    <!-- AI Chat Assistant removed -->
+    <!-- ✅ zoe-chat.html -->
+    <div id="aj247-chat-container">
+        <div id="aj247-chat-widget">
+            <div id="chat-header">
+                <span>💬 Zoe – your assistant</span>
+                <button id="chat-close-btn" aria-label="Close Chat">✖</button>
+            </div>
+            
+            <button id="clear-history-btn" style="
+                background: none;
+                color: white;
+                border: none;
+                font-size: 0.8rem;
+                margin-top: 4px;
+                margin-bottom: 4px;
+                cursor: pointer;
+                text-decoration: underline;
+                opacity: 0.8;
+            ">🗑️ Clear Chat</button>
 
-    <!-- Header -->
+            <div id="chat-log"></div>
+
+            <div class="chat-note">
+            ⚠️ Zoe is still learning and improving. Responses may vary.
+            </div>
+
+            <div id="chat-input-bar">
+                <input type="text" id="chat-input" placeholder="Ask me anything..." />
+                <button id="chat-send-btn" aria-label="Send">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <button id="chat-toggle-btn">
+    <span class="emoji">💬</span><span class="chat-label">Chat</span>
+    </button>
+
+
+    <!-- Header/Navigation -->
     <header>
         <a href="index.html" class="logo">AJ<span>247</span> Studios</a>
         <div class="hamburger" id="hamburger">
@@ -906,52 +59,24 @@
         </div>
         <nav>
             <ul id="nav-menu">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="#home">Home</a></li>
                 <li><a href="josiah.html">Videography</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="contact.html" class="cta-button">Book Now</a></li>
+                <li><a href="contact.html#booking" class="nav-btn">Book Now</a></li>
             </ul>
         </nav>
     </header>
-    <script>
-    // --- Mobile Menu Logic Only ---
-    (function() {
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
-        // Toggle mobile menu
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        });
-        // Close mobile menu when a link is clicked
-        const navLinks = navMenu.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                hamburger.classList.remove('active');
-            });
-        });
-        // Responsive nav: show/hide nav on resize
-        function handleResize() {
-            if (window.innerWidth > 768) {
-                navMenu.classList.remove('active');
-                hamburger.classList.remove('active');
-            }
-        }
-        window.addEventListener('resize', handleResize);
-    })();
-    </script>
 
     <!-- Hero Section -->
     <section class="hero">
         <h1 class="animate">Timeless Photography by AJ247</h1>
         <p class="animate delay-1">From fleeting glances to grand emotions — captured frame by frame.</p>
-        <div class="hero-btns animate delay-2">
-            <a href="#portfolio" class="btn">View Portfolio</a>
-            <a href="#packages" class="btn btn-outline">See Packages</a>
+        <div class="hero-btns fade-in delay-2">
+            <a href="#portfolio" class="btn btn-primary"><i class="fas fa-video"></i>View Portfolio</a>
+            <a href="#packages" class="btn btn-secondary"><i class="fas fa-camera"></i>See Packages</a>
         </div>
-        <a href="#portfolio" class="scroll-down animate delay-3">
+        <a href="#portfolio" class="scroll-down fade-in delay-3">
             <i class="fas fa-chevron-down"></i>
         </a>
     </section>
@@ -1275,134 +400,64 @@
     </section>
 
     <!-- Contact/Booking Form Section -->
-    <section class="section contact" id="booking">
-        <h2 class="section-title">Book a Photography Service / Contact</h2>
-        <form class="contact-form" method="POST" action="https://formsubmit.co/jobangles4life@gmail.com" onsubmit="return validateEmails();">
-            <div class="form-group">
-                <label for="name">Name<span aria-hidden="true" style="color:var(--gold);">*</span></label>
-                <input type="text" id="name" name="name" required placeholder="Your Name" autocomplete="name">
-            </div>
-            <div class="form-group">
-                <label for="email">Email<span aria-hidden="true" style="color:var(--gold);">*</span></label>
-                <input type="email" id="email" name="email" required placeholder="your@email.com" autocomplete="email">
-            </div>
-            <div class="form-group">
-                <label for="confirm_email">Confirm Email<span aria-hidden="true" style="color:var(--gold);">*</span></label>
-                <input type="email" id="confirm_email" name="confirm_email" required placeholder="Re-enter your email" autocomplete="email">
-            </div>
-            <div class="form-group">
-                <label for="shoot_type">Shoot Type</label>
-                <select id="shoot_type" name="shoot_type" required>
-                    <option value="" disabled selected>Select a shoot type</option>
-                    <option value="Weddings">Weddings</option>
-                    <option value="Concerts">Concerts</option>
-                    <option value="Sports">Sports</option>
-                    <option value="Portraits">Portraits</option>
-                    <option value="Family">Family</option>
-                    <option value="Other">Other</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="event_date">Event Date</label>
-                <input type="date" id="event_date" name="event_date">
-            </div>
-            <div class="form-group">
-                <label for="budget">Estimated Budget</label>
-                <input type="text" id="budget" name="budget" placeholder="e.g. 1000 zł">
-            </div>
-            <div class="form-group">
-                <label for="message">Notes / Message</label>
-                <textarea id="message" name="message" placeholder="Tell us about your project or inquiry..."></textarea>
-            </div>
-            <!-- Hidden Fields for FormSubmit -->
-            <input type="hidden" name="_subject" value="New Photography Inquiry – AJ247 Studios">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="box">
-            <input type="hidden" name="_next" value="thank-you.html">
-            <button type="submit" class="submit-btn">Send Message</button>
+    <section class="contact-section fade-in">
+        <h2>Contact Us</h2>
+        <p>Let’s capture something amazing together.</p>
+        
+        <form action="https://formsubmit.co/your@email.com" method="POST">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" required>
+
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="message">Message</label>
+        <textarea name="message" id="message" rows="6" required></textarea>
+
+        <!-- Optional FormSubmit hidden fields -->
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+
+        <button type="submit">Send Message</button>
         </form>
-        <script>
-        function validateEmails() {
-            var email = document.getElementById('email').value.trim();
-            var confirm = document.getElementById('confirm_email').value.trim();
-            if(email !== confirm) {
-                alert('Email addresses do not match. Please check and try again.');
-                return false;
-            }
-            return true;
-        }
-        </script>
     </section>
 
     <!-- Footer -->
-    <footer style="background-color: #1C1C1E; color: #F9F8F4; font-family: 'Montserrat', sans-serif;">
-        <div class="footer-content" style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:2rem; align-items:start; padding:2rem 1rem;">
-            <div style="display:flex; flex-direction:column; align-items:flex-start; gap:1rem;">
-                <div class="footer-logo" style="font-family:'Bebas Neue',sans-serif; font-size:2rem; color:#F9F8F4; letter-spacing:2px;">
-                    AJ<span style="color:#D4AF37;">247</span> Studios
-                </div>
-                <div style="font-size:1rem; color:#F9F8F4; opacity:0.8; word-break:break-all;">
-                    <i class="fas fa-envelope" style="color:#D4AF37; margin-right:0.5em;"></i> aj247studios@gmail.com
-                </div>
-            </div>
-            <nav class="footer-links" aria-label="Footer Navigation">
-                <h3 style="font-family:'Bebas Neue',sans-serif; color:#D4AF37; font-size:1.1rem; margin-bottom:1rem; letter-spacing:1px;">Quick Links</h3>
-                <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.5rem;">
-                    <li><a href="index.html" style="color:#F9F8F4; text-decoration:none; font-weight:500;">Home</a></li>
-                    <li><a href="josiah.html" style="color:#F9F8F4; text-decoration:none; font-weight:500;">Videographer</a></li>
-                    <li><a href="anthony.html" style="color:#F9F8F4; text-decoration:none; font-weight:500;">Photographer</a></li>
-                    <li><a href="contact.html" style="color:#F9F8F4; text-decoration:none; font-weight:500;">Contact</a></li>
-                    <li><a href="about.html" style="color:#F9F8F4; text-decoration:none; font-weight:500;">About</a></li>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">AJ<span>247</span> Studios</div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="anthony.html">Photography</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
-            </nav>
-            <div style="display:flex; flex-direction:column; align-items:flex-start; gap:1rem;">
-                <h3 style="font-family:'Bebas Neue',sans-serif; color:#1DAAA4; font-size:1.1rem; margin-bottom:1rem; letter-spacing:1px;">Connect</h3>
-                <div class="social-links" style="display:flex; gap:1.2rem;">
-                    <a href="#" aria-label="Instagram" style="color:#F9F8F4; font-size:1.6rem; transition:color 0.3s;"><i class="fab fa-instagram"></i></a>
-                    <a href="https://youtube.com/@aj247studios-b8y?si=ssWsrdiQwXzljWR6" aria-label="YouTube" style="color:#F9F8F4; font-size:1.6rem; transition:color 0.3s;"><i class="fab fa-youtube"></i></a>
-                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#packages">Videography Packages</a></li>
+                    <li><a href="#portfolio">Portfolio Highlights</a></li>
+                    <li><a href="#contact">Book Now</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Follow Us</h4>
+                <ul class="social-links">
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                </ul>
             </div>
         </div>
-        <div style="text-align:center; padding:1.5rem 1rem 0.5rem 1rem; font-size:0.95rem; color:#F9F8F4; border-top:1px solid rgba(255,255,255,0.08); margin-top:1.5rem;">
-            © 2025 AJ247 Studios. All rights reserved.
+        <div class="copyright">
+            &copy; 2023 AJ247 Studios. All rights reserved.
         </div>
-        <style>
-            @media (max-width: 700px) {
-                .footer-content { grid-template-columns:1fr !important; text-align:center; }
-                .footer-logo, .footer-links, .social-links { align-items:center !important; justify-content:center !important; }
-                .footer-links ul { align-items:center !important; }
-            }
-        </style>
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const categoryButtons = document.querySelectorAll('.category-btn');
-            const packageCards = document.querySelectorAll('.package-card');
-
-            categoryButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    // Remove 'active' from all buttons
-                    categoryButtons.forEach(b => b.classList.remove('active'));
-                    // Set clicked button as active
-                    btn.classList.add('active');
-
-                    const category = btn.getAttribute('data-category');
-
-                    packageCards.forEach(card => {
-                        // If "All" is selected, show everything
-                        if (category === 'all') {
-                            card.style.display = 'block';
-                        } else {
-                            // Check if card has the class matching the category
-                            card.style.display = card.classList.contains(category) ? 'block' : 'none';
-                        }
-                    });
-                });
-            });
-        });
-    </script>
-
+    
+    <script src="anthony files/anthony.js"></script>
 
 </body>
 </html>
