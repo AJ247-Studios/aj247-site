@@ -1,523 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Us | AJ247 Studios</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet"/>
-  <style>
-    :root {
-        --charcoal: #1C1C1E;
-        --gold: #D4AF37;
-        --teal: #1DAAA4;
-        --cream: #F9F8F4;
-        --blush: #F6D4CB;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>About Us | AJ247 Studios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="about-files/about.css">
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+  </head>
+  <body>
+    <!-- ✅ zoe-chat.html -->
+    <div id="aj247-chat-container">
+        <div id="aj247-chat-widget">
+            <div id="chat-header">
+                <span>💬 Zoe – your assistant</span>
+                <button id="chat-close-btn" aria-label="Close Chat">✖</button>
+            </div>
+            
+            <button id="clear-history-btn" style="
+                background: none;
+                color: white;
+                border: none;
+                font-size: 0.8rem;
+                margin-top: 4px;
+                margin-bottom: 4px;
+                cursor: pointer;
+                text-decoration: underline;
+                opacity: 0.8;
+            ">🗑️ Clear Chat</button>
 
-    body {
-        font-family: 'Montserrat', sans-serif;
-        color: var(--charcoal);
-        line-height: 1.6;
-        background-color: var(--cream);
-    }
+            <div id="chat-log"></div>
 
-    h1, h2, h3, h4, h5, h6 {
-        font-family: 'Bebas Neue', sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-weight: normal;
-    }
+            <div class="chat-note">
+            ⚠️ Zoe is still learning and improving. Responses may vary.
+            </div>
 
-    .script-font {
-        font-family: 'Playfair Display', serif;
-        font-style: italic;
-        text-transform: none;
-    }
+            <div id="chat-input-bar">
+                <input type="text" id="chat-input" placeholder="Ask me anything..." />
+                <button id="chat-send-btn" aria-label="Send">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
 
-    /* Header/Navigation */
-    header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background-color: rgba(28, 28, 30, 0.95);
-        padding: 1rem 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 1000;
-        transition: all 0.3s ease;
-    }
+    <button id="chat-toggle-btn">
+    <span class="emoji">💬</span><span class="chat-label">Chat</span>
+    </button>
 
-    .logo {
-        font-family: 'Bebas Neue', sans-serif;
-        font-size: 2rem;
-        color: white;
-        text-decoration: none;
-    }
 
-    .logo span {
-        color: var(--gold);
-    }
 
-    nav ul {
-        display: flex;
-        list-style: none;
-    }
+    <header>
+      <a href="index.html" class="logo">AJ<span>247</span> Studios</a>
+      <div class="hamburger" id="hamburger">
+          <i class="fas fa-bars"></i>
+      </div>
+      <nav>
+          <ul id="nav-menu">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="josiah.html">Videography</a></li>
+              <li><a href="anthony.html">Photography</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="contact.html#booking" class="nav-btn">Book Now</a></li>
+          </ul>
+      </nav>
+    </header>
 
-    nav ul li {
-        margin-left: 2rem;
-    }
+    <section class="hero">
+      <h1>The Creators Behind the Lens</h1>
+      <p>Two artists. One shared vision — to capture life’s most unforgettable moments.</p>
+    </section>
 
-    nav ul li a {
-        color: white;
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.3s;
-    }
+    <section class="duo-section">
+      <div class="bio-card">
+        <img src="/other-img/photographer.webp" alt="Anthony – Photographer" />
+        <h3>📸 Anthony – Photographer</h3>
+        <p>I believe great photography doesn’t just freeze time — it captures feeling. Whether it’s the quiet of a pre-wedding moment or the chaos of a football match, I find truth in light and timing.</p>
+        <p class="fun-fact">“I always bring an extra lens… and snacks.”</p>
+      </div>
+      <div class="bio-card">
+        <img src="/other-img/videographer.webp" alt="Josiah – Videographer" />
+        <h3>🎬 Josiah – Videographer</h3>
+        <p>I’m Josiah, a filmmaker driven by energy and movement. Whether I’m capturing wedding vows or live concerts, I chase emotion through the lens and edit with rhythm and story. Every video is a memory in motion.</p>
+        <p class="fun-fact">“My favorite moment to capture? The exact second before a crowd goes wild.”</p>
+      </div>
+    </section>
 
-    nav ul li a:hover {
-        color: var(--gold);
-    }
+    <section class="mission">
+      <h2>Why We Do What We Do</h2>
+      <p>At AJ247 Studios, we tell real stories — no filters, no fluff. We believe in honesty, emotion, and excellence. Whether you hire one of us or both, you’ll get passionate creators who care deeply about your story. Our work is personal because people matter.</p>
+      <div class="features">
+        <div class="feature-item"><i class="fas fa-lightbulb"></i> Creative Direction Included</div>
+        <div class="feature-item"><i class="fas fa-stopwatch"></i> Fast Turnaround</div>
+        <div class="feature-item"><i class="fas fa-comments"></i> Clear Communication</div>
+        <div class="feature-item"><i class="fas fa-magic"></i> Premium Look, Friendly Team</div>
+      </div>
+    </section>
 
-    .nav-btn {
-        background-color: var(--gold);
-        color: var(--charcoal);
-        padding: 0.5rem 1.5rem;
-        border-radius: 4px;
-        font-weight: 600;
-        transition: all 0.3s;
-    }
-
-    .nav-btn:hover {
-        background-color: var(--teal);
-        color: white;
-    }
-
-    .hamburger {
-        display: none;
-        cursor: pointer;
-        color: white;
-        font-size: 1.5rem;
-        position: absolute;
-        top: 1.2rem;
-        right: 2rem;
-        z-index: 1100;
-    }
-
-    /* Mobile Styles */
-    @media (max-width: 768px) {
-        .hamburger {
-            display: block;
-            position: absolute;
-            top: 1.2rem;
-            right: 2rem;
-            z-index: 1100;
-        }
-
-        nav ul {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background-color: var(--charcoal);
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: flex-start;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-            border-bottom-left-radius: 0.5rem;
-            border-bottom-right-radius: 0.5rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s cubic-bezier(.4,0,.2,1);
-            z-index: 999;
-        }
-
-        nav ul.active {
-            max-height: 400px;
-            /* enough for 6-7 links */
-            transition: max-height 0.3s cubic-bezier(.4,0,.2,1);
-        }
-
-        nav ul li {
-            margin: 0;
-            width: 100%;
-        }
-        nav ul li a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100vw;
-            min-width: 0;
-            min-height: 56px;
-            padding: 1rem 0;
-            font-size: 1.2rem;
-            background: none;
-            border: none;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.2s, color 0.2s;
-            cursor: pointer;
-        }
-        nav ul li a:hover, nav ul li a:focus {
-            background: var(--gold);
-            color: var(--charcoal);
-        }
-        nav ul li .nav-btn {
-            background: var(--teal);
-            color: white;
-            border-radius: 0;
-            font-size: 1.2rem;
-            width: 100vw;
-            min-height: 56px;
-            padding: 1rem 0;
-            margin: 0;
-        }
-        nav ul li .nav-btn:hover, nav ul li .nav-btn:focus {
-            background: var(--gold);
-            color: var(--charcoal);
-        }
-
-        .duo-section, .bts-images {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .bio-card {
-            text-align: center;
-        }
-    }
-
-    /* Hero */
-    .hero {
-      background: linear-gradient(rgba(28,28,30,0.5), rgba(28,28,30,0.5)), url('other-img/about-background.webp') center/cover no-repeat;
-      color: white;
-      text-align: center;
-      min-height: 60vh;
-      padding: 8rem 2rem 7rem 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      margin-top: 1rem;
-    }
-
-    /* Meet the Duo */
-    .duo-section {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 3rem;
-      padding: 4rem 2rem;
-      align-items: center;
-    }
-
-    .bio-card {
-      background: white;
-      border-left: 5px solid var(--gold);
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
-
-    .bio-card img {
-      width: 100%;
-      max-width: 250px;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-      object-fit: cover;
-      aspect-ratio: 5/4;
-    }
-
-    .bio-card h3 {
-      color: var(--teal);
-      font-size: 1.5rem;
-    }
-
-    .bio-card .fun-fact {
-      font-style: italic;
-      margin-top: 1rem;
-      font-size: 0.95rem;
-      color: #555;
-    }
-
-    /* Mission Section */
-    .mission {
-      background: var(--cream);
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-
-    .mission h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .mission p {
-      max-width: 800px;
-      margin: 0 auto 2rem;
-      font-size: 1.1rem;
-    }
-
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-    }
-
-    .feature-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-weight: 500;
-    }
-
-    .feature-item i {
-      color: var(--teal);
-      font-size: 1.3rem;
-    }
-
-    /* Timeline */
-    .timeline {
-      padding: 4rem 2rem;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .timeline h2 {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .timeline ul {
-      list-style: none;
-      padding-left: 1rem;
-    }
-
-    .timeline li {
-      position: relative;
-      margin-bottom: 1.5rem;
-      padding-left: 1.5rem;
-    }
-
-    .timeline li::before {
-      content: "📍";
-      position: absolute;
-      left: 0;
-    }
-
-    /* BTS Section */
-    .bts {
-      padding: 4rem 2rem;
-      background: white;
-      text-align: center;
-    }
-
-    .bts h2 {
-      margin-bottom: 1rem;
-    }
-
-    .bts-images {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: center;
-    }
-
-    .bts-images img {
-      width: 300px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 6px;
-    }
-
-    /* CTA */
-    .cta {
-      background: var(--charcoal);
-      color: var(--gold);
-      text-align: center;
-      padding: 4rem 2rem;
-    }
-
-    .cta h2 {
-      margin-bottom: 1rem;
-    }
-
-    .cta-buttons {
-      margin-top: 2rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .cta-buttons a {
-      padding: 0.8rem 1.5rem;
-      background-color: var(--gold);
-      color: var(--charcoal);
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .cta-buttons a:hover {
-      background-color: var(--teal);
-      color: white;
-    }
-
-    /* Footer */
-    footer {
-      background: #111;
-      color: #aaa;
-      text-align: center;
-      padding: 2rem 1rem;
-    }
-
-    footer a {
-      color: #ddd;
-      margin: 0 0.5rem;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      color: var(--gold);
-    }
-
-    @media (max-width: 768px) {
-      .duo-section, .bts-images {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .bio-card {
-        text-align: center;
-      }
-    }
-  </style>
-</head>
-<body>
-
-<header>
-  <a href="index.html" class="logo">AJ<span>247</span> Studios</a>
-  <div class="hamburger" id="hamburger">
-      <i class="fas fa-bars"></i>
-  </div>
-  <nav>
-      <ul id="nav-menu">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="josiah.html">Videography</a></li>
-          <li><a href="anthony.html">Photography</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="contact.html#booking" class="nav-btn">Book Now</a></li>
+    <section class="timeline">
+      <h2>Our Journey</h2>
+      <ul>
+        <li>📆 2024 — First client project (wedding + concert)</li>
+        <li>🚀 2025 — Website launched + Basketball</li>
       </ul>
-  </nav>
-</header>
+    </section>
 
-<section class="hero">
-  <h1>The Creators Behind the Lens</h1>
-  <p>Two artists. One shared vision — to capture life’s most unforgettable moments.</p>
-</section>
+    <section class="bts">
+      <h2>Behind the Scenes</h2>
+      <p>We’re more than just creatives — we’re your team.</p>
+      <div class="bts-images">
+        <img src="other-img/Setup-bts-1.webp" alt="BTS Filming"/>
+        <img src="https://via.placeholder.com/300x200" alt="Duo Working"/>
+        <img src="other-img/Setup-bts-1.webp" alt="Gear Setup"/>
+      </div>
+    </section>
 
-<section class="duo-section">
-  <div class="bio-card">
-    <img src="/other-img/photographer.webp" alt="Anthony – Photographer" />
-    <h3>📸 Anthony – Photographer</h3>
-    <p>I believe great photography doesn’t just freeze time — it captures feeling. Whether it’s the quiet of a pre-wedding moment or the chaos of a football match, I find truth in light and timing.</p>
-    <p class="fun-fact">“I always bring an extra lens… and snacks.”</p>
-  </div>
-  <div class="bio-card">
-    <img src="/other-img/videographer.webp" alt="Josiah – Videographer" />
-    <h3>🎬 Josiah – Videographer</h3>
-    <p>I’m Josiah, a filmmaker driven by energy and movement. Whether I’m capturing wedding vows or live concerts, I chase emotion through the lens and edit with rhythm and story. Every video is a memory in motion.</p>
-    <p class="fun-fact">“My favorite moment to capture? The exact second before a crowd goes wild.”</p>
-  </div>
-</section>
+    <section class="cta">
+      <h2>Ready to Create Something Timeless?</h2>
+      <p>Book us solo or together — let’s bring your vision to life.</p>
+      <div class="cta-buttons">
+        <a href="contact.html#josiah">🎥 Hire Josiah</a>
+        <a href="contact.html#anthony">📸 Hire Anthony</a>
+        <a href="contact.html#both">🤝 Book the Duo</a>
+      </div>
+    </section>
 
-<section class="mission">
-  <h2>Why We Do What We Do</h2>
-  <p>At AJ247 Studios, we tell real stories — no filters, no fluff. We believe in honesty, emotion, and excellence. Whether you hire one of us or both, you’ll get passionate creators who care deeply about your story. Our work is personal because people matter.</p>
-  <div class="features">
-    <div class="feature-item"><i class="fas fa-lightbulb"></i> Creative Direction Included</div>
-    <div class="feature-item"><i class="fas fa-stopwatch"></i> Fast Turnaround</div>
-    <div class="feature-item"><i class="fas fa-comments"></i> Clear Communication</div>
-    <div class="feature-item"><i class="fas fa-magic"></i> Premium Look, Friendly Team</div>
-  </div>
-</section>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">AJ<span>247</span> Studios</div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="anthony.html">Photography</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#packages">Videography Packages</a></li>
+                    <li><a href="#portfolio">Portfolio Highlights</a></li>
+                    <li><a href="#contact">Book Now</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Follow Us</h4>
+                <ul class="social-links">
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 AJ247 Studios. All rights reserved.
+        </div>
+    </footer>
 
-<section class="timeline">
-  <h2>Our Journey</h2>
-  <ul>
-    <li>📆 2024 — First client project (wedding + concert)</li>
-    <li>🚀 2025 — Website launched + Basketball</li>
-  </ul>
-</section>
+    <script src="about-files/about.js"></script>
 
-<section class="bts">
-  <h2>Behind the Scenes</h2>
-  <p>We’re more than just creatives — we’re your team.</p>
-  <div class="bts-images">
-    <img src="other-img/Setup-bts-1.webp" alt="BTS Filming"/>
-    <img src="https://via.placeholder.com/300x200" alt="Duo Working"/>
-    <img src="other-img/Setup-bts-1.webp" alt="Gear Setup"/>
-  </div>
-</section>
 
-<section class="cta">
-  <h2>Ready to Create Something Timeless?</h2>
-  <p>Book us solo or together — let’s bring your vision to life.</p>
-  <div class="cta-buttons">
-    <a href="contact.html#josiah">🎥 Hire Josiah</a>
-    <a href="contact.html#anthony">📸 Hire Anthony</a>
-    <a href="contact.html#both">🤝 Book the Duo</a>
-  </div>
-</section>
-
-<footer>
-  <p><strong>AJ247 Studios</strong> – Telling Your Story Frame by Frame</p>
-  <p>
-    <a href="index.html">Home</a> |
-    <a href="josiah.html">Videography</a> |
-    <a href="anthony.html">Photography</a> |
-    <a href="contact.html">Contact</a>
-  </p>
-  <p>© 2025 AJ247 Studios. All rights reserved.</p>
-</footer>
-
-<script>
-    // Mobile menu burger logic
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('nav-menu');
-    hamburger.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        hamburger.classList.toggle('active');
-    });
-    // Close mobile menu when a link is clicked
-    const navLinks = navMenu.querySelectorAll('a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            hamburger.classList.remove('active');
-        });
-    });
-</script>
-
-</body>
+  </body>
 </html>
