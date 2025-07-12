@@ -299,3 +299,62 @@ window.addEventListener('load', () => {
         });
     }, 300);
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('.video-wrapper').forEach(wrapper => {
+    wrapper.addEventListener('click', () => {
+      const videoId = wrapper.dataset.videoId;
+      // Create overlay
+      const overlay = document.createElement('div');
+      overlay.style.position = 'fixed';
+      overlay.style.top = '0';
+      overlay.style.left = '0';
+      overlay.style.width = '100vw';
+      overlay.style.height = '100vh';
+      overlay.style.backgroundColor = 'rgba(0,0,0,0.9)';
+      overlay.style.display = 'flex';
+      overlay.style.justifyContent = 'center';
+      overlay.style.alignItems = 'center';
+      overlay.style.zIndex = '9999';
+      // Create iframe
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+      iframe.title = "YouTube video player";
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      iframe.allowFullscreen = true;
+      iframe.style.width = '70vw';
+      iframe.style.height = '80vh';
+      iframe.frameBorder = '0';
+      // Create close button
+      const closeBtn = document.createElement('button');
+      closeBtn.textContent = '×';
+      closeBtn.style.position = 'absolute';
+      closeBtn.style.top = '20px';
+      closeBtn.style.right = '30px';
+      closeBtn.style.fontSize = '3rem';
+      closeBtn.style.color = 'white';
+      closeBtn.style.background = 'transparent';
+      closeBtn.style.border = 'none';
+      closeBtn.style.cursor = 'pointer';
+      // Function to remove overlay and cleanup event listener
+      function closeOverlay() {
+        document.body.removeChild(overlay);
+        document.removeEventListener('keydown', escFunction);
+      }
+      // Close button click event
+      closeBtn.addEventListener('click', closeOverlay);
+      // Escape key event
+      function escFunction(event) {
+        if (event.key === "Escape" || event.key === "Esc") {
+          closeOverlay();
+        }
+      }
+      document.addEventListener('keydown', escFunction);
+      // Append iframe and close button to overlay
+      overlay.appendChild(iframe);
+      overlay.appendChild(closeBtn);
+      // Append overlay to body
+      document.body.appendChild(overlay);
+    });
+  });
+});
