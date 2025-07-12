@@ -103,7 +103,7 @@ async function sendChatMessage() {
     try {
         const userId = localStorage.getItem("user_id") || generateRandomUserId();
         const payload = { message: userMsg, user_id: userId };
-        const response = await fetch('https://salon-jonathan-flexibility-medicine.trycloudflare.com/chat', {
+        const response = await fetch('https://installations-duplicate-classes-ip.trycloudflare.com/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
@@ -320,3 +320,18 @@ document.querySelectorAll('.category-btn').forEach(button => {
         });
     });
 });
+
+  document.querySelectorAll('.video-wrapper').forEach(item => {
+    item.addEventListener('click', () => {
+      const videoId = item.getAttribute('data-video-id');
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.setAttribute('frameborder', '0');
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+      iframe.style.width = '100%';
+      iframe.style.height = '100%';
+      iframe.classList.add('portfolio-iframe');
+      item.replaceWith(iframe);
+    });
+  });
