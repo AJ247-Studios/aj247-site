@@ -299,3 +299,24 @@ window.addEventListener('load', () => {
         });
     }, 300);
 });
+
+// Category Filtering Logic
+document.querySelectorAll('.category-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const selectedCategory = button.getAttribute('data-category');
+
+        // Toggle active class on buttons
+        document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        // Show/hide packages
+        document.querySelectorAll('.package-card').forEach(card => {
+            const matches = card.classList.contains(selectedCategory);
+            if (selectedCategory === 'all' || matches) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+});
