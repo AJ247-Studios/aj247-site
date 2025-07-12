@@ -167,7 +167,7 @@ nav ul li a:hover {
   border-radius: 8px;
   margin-bottom: 1rem;
   object-fit: cover;
-  aspect-ratio: 5/4;
+  aspect-ratio: 4/5;
 }
 .bio-card h3 {
   color: var(--teal);
