@@ -11,15 +11,58 @@
 </head>
 <body>
 
-  <header>
-    <a href="index.html" class="logo">AJ<span>247</span> Studios</a>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contact.html" class="nav-btn">Contact</a></li>
-      </ul>
-    </nav>
+  <!-- ✅ zoe-chat.html -->
+  <div id="aj247-chat-container">
+      <div id="aj247-chat-widget">
+          <div id="chat-header">
+              <span>💬 Zoe – your assistant</span>
+              <button id="chat-close-btn" aria-label="Close Chat">✖</button>
+          </div>
+          
+          <button id="clear-history-btn" style="
+              background: none;
+              color: white;
+              border: none;
+              font-size: 0.8rem;
+              margin-top: 4px;
+              margin-bottom: 4px;
+              cursor: pointer;
+              text-decoration: underline;
+              opacity: 0.8;
+          ">🗑️ Clear Chat</button>
+          <div id="chat-log"></div>
+          <div class="chat-note">
+          ⚠️ Zoe is still learning and improving. Responses may vary.
+          </div>
+          <div id="chat-input-bar">
+              <input type="text" id="chat-input" placeholder="Ask me anything..." />
+              <button id="chat-send-btn" aria-label="Send">
+                  <i class="fas fa-paper-plane"></i>
+              </button>
+          </div>
+      </div>
+  </div>
+  
+  <button id="chat-toggle-btn">
+  <span class="emoji">💬</span><span class="chat-label">Chat</span>
+  </button>
+  
+    <!-- Header/Navigation -->
+    <header>
+      <a href="index.html" class="logo">AJ<span>247</span> Studios</a>
+      <div class="hamburger" id="hamburger">
+          <i class="fas fa-bars"></i>
+      </div>
+      <nav>
+          <ul id="nav-menu">
+              <li><a href="#home">Home</a></li>
+              <li><a href="josiah.html">Videography</a></li>
+              <li><a href="anthony.html">Photography</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="contact.html#booking" class="nav-btn">Book Now</a></li>
+          </ul>
+      </nav>
   </header>
 
   <section class="hero">
@@ -31,7 +74,7 @@
     </div>
   </section>
 
-    <script src="thank-you-files/thank-you.js"></script>
+  <script src="thank-you-files/thank-you.js"></script>
 
 
 </body>
