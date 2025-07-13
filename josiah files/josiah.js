@@ -122,7 +122,7 @@ async function sendChatMessage() {
         console.error("❌ Zoe backend error:", error);
         clearInterval(dotInterval);
         chatLog.removeChild(thinkingDiv);
-        appendMessage('Zoe', '⚠️ Sorry, I am offline or having trouble connecting.');
+        appendMessage('Zoe', '⚠️ Sorry, I am currently offline or having trouble connecting. I might be getting updates or fixes — please try again shortly.');
     } finally {
         chatSendBtn.disabled = false;
         chatInput.disabled = false;
