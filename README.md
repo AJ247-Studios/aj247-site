@@ -20,8 +20,3 @@ We are a full-service visual production team delivering emotionally resonant con
 - Responsive layout with mobile optimization
 - Package details, portfolio galleries, and booking contact form
 - Hosted on GitHub Pages
-
-
----
-
-Let me know if you want a **developer-facing** version too (for open source collaboration or future contributors), or if this one will live public just as documentation. I can also set up a `CONTRIBUTING.md` or roadmap if needed.
