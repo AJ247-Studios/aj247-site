@@ -103,7 +103,7 @@ async function sendChatMessage() {
     try {
         const userId = localStorage.getItem("user_id") || generateRandomUserId();
         const payload = { message: userMsg, user_id: userId };
-        const response = await fetch('https://installations-duplicate-classes-ip.trycloudflare.com/chat', {
+        const response = await fetch('https://away-steal-kelly-cant.trycloudflare.com/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
