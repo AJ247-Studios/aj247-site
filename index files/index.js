@@ -103,7 +103,7 @@ async function sendChatMessage() {
     try {
         const userId = localStorage.getItem("user_id") || generateRandomUserId();
         const payload = { message: userMsg, user_id: userId };
-        const response = await fetch('https://installations-duplicate-classes-ip.trycloudflare.com/chat', {
+        const response = await fetch('https://away-steal-kelly-cant.trycloudflare.com/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
@@ -358,3 +358,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+const ZOE_USER_ID_KEY = "zoe_user_id";
+let userId = localStorage.getItem(ZOE_USER_ID_KEY);
+if (!userId) {
+  userId = crypto.randomUUID();
+  localStorage.setItem(ZOE_USER_ID_KEY, userId);
+}
+
+async function sendMessage(msg) {
+  const res = await fetch("http://localhost:8000/chat", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ message: msg, user_id: userId })
+  });
+  const data = await res.json();
+  return data.reply;
+}
