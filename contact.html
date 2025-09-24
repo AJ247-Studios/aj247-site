@@ -4,96 +4,172 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact Us | AJ247 Studios</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="contact-files/contact.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="contact-files/contact.css">
 </head>
 <body>
 
-  <!-- ✅ zoe-chat.html -->
+  <!-- ✅ Zoe Chat -->
   <div id="aj247-chat-container">
-      <div id="aj247-chat-widget">
-          <div id="chat-header">
-              <span>💬 Zoe – your assistant</span>
-              <button id="chat-close-btn" aria-label="Close Chat">✖</button>
-          </div>
-          
-          <button id="clear-history-btn" style="
-              background: none;
-              color: white;
-              border: none;
-              font-size: 0.8rem;
-              margin-top: 4px;
-              margin-bottom: 4px;
-              cursor: pointer;
-              text-decoration: underline;
-              opacity: 0.8;
-          ">🗑️ Clear Chat</button>
-          <div id="chat-log"></div>
-          <div class="chat-note">
-          ⚠️ Zoe is still learning and improving. Responses may vary.
-          </div>
-          <div id="chat-input-bar">
-              <input type="text" id="chat-input" placeholder="Ask me anything..." />
-              <button id="chat-send-btn" aria-label="Send">
-                  <i class="fas fa-paper-plane"></i>
-              </button>
-          </div>
+    <div id="aj247-chat-widget">
+      <div id="chat-header">
+        <span>💬 Zoe – your assistant</span>
+        <button id="chat-close-btn" aria-label="Close Chat">✖</button>
       </div>
+      <button id="clear-history-btn" style="
+        background: none;
+        color: white;
+        border: none;
+        font-size: 0.8rem;
+        margin-top: 4px;
+        margin-bottom: 4px;
+        cursor: pointer;
+        text-decoration: underline;
+        opacity: 0.8;
+      ">🗑️ Clear Chat</button>
+      <div id="chat-log"></div>
+      <div class="chat-note">
+        ⚠️ Zoe is still learning and improving. Responses may vary.
+      </div>
+      <div id="chat-input-bar">
+        <input type="text" id="chat-input" placeholder="Ask me anything..." />
+        <button id="chat-send-btn" aria-label="Send">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
   </div>
-  
+
   <button id="chat-toggle-btn">
-  <span class="emoji">💬</span><span class="chat-label">Chat</span>
+    <span class="emoji">💬</span><span class="chat-label">Chat</span>
   </button>
-  
-    <!-- Header/Navigation -->
-    <header>
-      <a href="index.html" class="logo">AJ<span>247</span> Studios</a>
-      <div class="hamburger" id="hamburger">
-          <i class="fas fa-bars"></i>
-      </div>
-      <nav>
-          <ul id="nav-menu">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="josiah.html">Videography</a></li>
-              <li><a href="anthony.html">Photography</a></li>
-              <li><a href="about.html">About Us</a></li>
-              <li><a href="contact.html">Contact</a></li>
-              <li><a href="contact.html#booking" class="nav-btn">Book Now</a></li>
-          </ul>
-      </nav>
+
+  <!-- Header/Navigation -->
+  <header>
+    <a href="index.html" class="logo">AJ<span>247</span> Studios</a>
+    <div class="hamburger" id="hamburger">
+      <i class="fas fa-bars"></i>
+    </div>
+    <nav>
+      <ul id="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="josiah.html">Videography</a></li>
+        <li><a href="anthony.html">Photography</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html#booking" class="nav-btn">Book Now</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <section class="contact-section fade-in">
-    <h2>Contact Us</h2>
-    <p>Let’s capture something amazing together.</p>
+  <!-- Contact + FAQ Side by Side -->
+  <section class="contact-faq-wrapper fade-in">
 
-    <form action="https://formsubmit.co/881ee7e045539028c6d8246562605486" method="POST">
-      <label for="name">Name</label>
-      <input type="text" name="name" id="name" required>
+    <!-- Contact Section (Right) -->
+    <div class="contact-section">
+      <h2>Contact Us</h2>
+      <p>Let’s capture something amazing together.</p>
+      <form action="https://formsubmit.co/881ee7e045539028c6d8246562605486" method="POST">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" placeholder="John Smith" required>
 
-      <label for="email">Email</label>
-      <input type="email" name="email" id="email" required>
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" placeholder="johnsmith@email.com" required>
 
-      <label for="message">Message</label>
-      <textarea name="message" id="message" rows="6" required></textarea>
+    <label for="message">Message</label>
+    <textarea name="message" id="message" rows="6" placeholder="Tell us about your event, date, and location..." required></textarea>
 
-      <!-- Optional FormSubmit hidden fields -->
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://aj247-studios.github.io/aj247-site/thank-you.html">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://aj247-studios.github.io/aj247-site/thank-you.html">
 
-      <button type="submit">Send Message</button>
-    </form>
+        <button type="submit">Send Message</button>
+      </form>
       <div style="margin-top: 1.5em; text-align: center;">
         <a href="sms:+48503685377" class="contact-btn" style="display: inline-block; padding: 0.75em 1.5em; background: #0078d4; color: #fff; border-radius: 5px; text-decoration: none; font-weight: 500;">Text Us: +48 503 685 377</a>
       </div>
+    </div>
+
+    <!-- FAQ Section (Left) -->
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" type="button">What types of events do you cover?</button>
+          <div class="faq-answer">We film and photograph weddings, sports, and special events.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">How far in advance should I book you?</button>
+          <div class="faq-answer">Up to one year in advance. Minimum booking notice is 2 weeks.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">Do you require a deposit to secure a date?</button>
+          <div class="faq-answer">Yes. A 30% deposit is required to confirm your booking.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">Do you charge travel fees?</button>
+          <div class="faq-answer">We include travel up to 50 km. Beyond that, travel costs must be covered by the client.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">How is coverage structured?</button>
+          <div class="faq-answer">We offer coverage by the hour and by location. Packages are flexible and can be customized to fit your needs.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">Do you capture both candid moments and posed shots?</button>
+          <div class="faq-answer">Yes. We do both so you get the full story of your event.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">Can I customize a package?</button>
+          <div class="faq-answer">Absolutely. Our packages are suggestions — we tailor them to you.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">Is editing included in the price?</button>
+          <div class="faq-answer">Yes, editing is included.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">How many people are on your team?</button>
+          <div class="faq-answer">At this stage, 2 team members (photographer + videographer).</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">How long does editing usually take?</button>
+          <div class="faq-answer">2–4 weeks, depending on the size of the project.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">How will I receive my photos/videos?</button>
+          <div class="faq-answer">Currently via USB. In the future, we plan to also offer online galleries.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">Can I request revisions on the final video?</button>
+          <div class="faq-answer">Yes. Up to 3 revisions are included.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">Do you keep backup copies of my files?</button>
+          <div class="faq-answer">Yes. We keep backups for at least 3 months. If you need files later, ask — we might still have them.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">Do you create highlight reels or social media clips?</button>
+          <div class="faq-answer">Yes, highlight reels and short clips are available.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">Do you offer drone footage?</button>
+          <div class="faq-answer">Not yet.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">Can you work in both English and Polish environments?</button>
+          <div class="faq-answer">Yes.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">Do you provide same-day edits?</button>
+          <div class="faq-answer">Yes, we can provide a short highlight reel the same day for weddings or sports.</div>
+        </div>
+      </div>
+    </div>
+
   </section>
 
+
   <script src="contact-files/contact.js"></script>
-
-
 </body>
 </html>
-
