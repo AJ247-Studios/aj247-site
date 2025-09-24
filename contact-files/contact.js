@@ -8,6 +8,12 @@ const chatContainer = document.getElementById('aj247-chat-container');
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('nav-menu');
 
+// Email validation function
+function isValidEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
 // Save chat history
 function saveChatHistory() {
     localStorage.setItem("aj247_chat_history", chatLog.innerHTML);
@@ -300,3 +306,26 @@ window.addEventListener('load', () => {
     }, 300);
 });
 
+// FAQ accordion dropdown
+document.querySelectorAll(".faq-question").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const item = btn.parentElement;
+    item.classList.toggle("active");
+  });
+});
+
+// Email validation before form submit
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector(".contact-section form");
+    const emailInput = document.getElementById("email");
+
+    if (form && emailInput) {
+        form.addEventListener("submit", (e) => {
+            if (!isValidEmail(emailInput.value)) {
+                e.preventDefault(); // stop form from submitting
+                alert("⚠️ Please enter a valid email address.");
+                emailInput.focus();
+            }
+        });
+    }
+});

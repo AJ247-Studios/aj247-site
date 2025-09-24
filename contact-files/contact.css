@@ -1,3 +1,6 @@
+form textarea {
+    resize: vertical; /* allow up/down resize only */
+}
 :root {
     --charcoal: #1C1C1E;
     --gold: #D4AF37;
@@ -1009,4 +1012,80 @@ form button {
 form button:hover {
   background-color: var(--teal);
   color: white;
+}
+
+/* FAQ Section */
+
+.contact-faq-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 120px auto 60px;
+  padding: 2rem;
+  flex-direction: row; /* default: contact left, faq right */
+}
+
+/* Desktop: FAQ left, Contact right */
+@media (min-width: 769px) {
+  .contact-faq-wrapper {
+    flex-direction: row-reverse; /* flips so FAQ shows left */
+  }
+}
+
+.faq-section {
+  flex: 1;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  max-width: 500px;
+}
+
+.faq-section h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 1rem;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+  transition: background 0.3s;
+}
+
+.faq-question:hover {
+  background: #f5f5f5;
+}
+
+.faq-answer {
+  display: none;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+.contact-section {
+  flex: 1;
+  max-width: 600px;
+  margin: 0;
+}
+
+/* Mobile: stack vertically (Contact first, FAQ after) */
+@media (max-width: 768px) {
+  .contact-faq-wrapper {
+    flex-direction: column;
+  }
 }
