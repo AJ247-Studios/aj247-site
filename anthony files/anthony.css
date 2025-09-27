@@ -1636,3 +1636,95 @@ form button:hover {
     margin-bottom: 2rem;
     font-weight: 400;
 }
+
+/* Add these CSS rules to anthony.css for the enhanced contact form */
+
+/* Enhanced Contact Form Styling */
+form input, form textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+/* Focus states for better UX */
+form input:focus, form textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+}
+
+/* Placeholder styling */
+form input::placeholder, form textarea::placeholder {
+    color: #888;
+    opacity: 0.7;
+}
+
+/* Textarea specific improvements */
+form textarea {
+    resize: vertical; /* Allow up/down resize only */
+    min-height: 120px;
+}
+
+/* Text Us Button Styling */
+.text-us-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #0078d4;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 120, 212, 0.2);
+}
+
+.text-us-btn:hover {
+    background-color: #106ebe;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 120, 212, 0.3);
+}
+
+.text-us-btn i {
+    font-size: 1.1rem;
+}
+
+/* Mobile responsiveness for text button */
+@media (max-width: 768px) {
+    .text-us-btn {
+        width: 100%;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+}
+
+/* Enhanced form validation styling */
+form input:invalid:not(:placeholder-shown) {
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+}
+
+form input:valid:not(:placeholder-shown) {
+    border-color: #27ae60;
+    box-shadow: 0 0 0 2px rgba(39, 174, 96, 0.2);
+}
+
+/* Loading state for submit button */
+form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #ccc;
+}
+
+form button:disabled:hover {
+    background-color: #ccc;
+    color: var(--charcoal);
+    transform: none;
+}
