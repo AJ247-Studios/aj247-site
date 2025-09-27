@@ -329,3 +329,192 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+// Add these enhanced functions to your contact.js file
+
+// Character counter for textarea
+function addCharacterCounter() {
+    const messageField = document.getElementById("message");
+    if (messageField) {
+        const counter = document.createElement("div");
+        counter.className = "char-counter";
+        counter.id = "char-counter";
+        messageField.parentNode.insertBefore(counter, messageField.nextSibling);
+
+        function updateCounter() {
+            const current = messageField.value.length;
+            const max = 1000; // Set maximum character limit
+            counter.textContent = `${current}/${max} characters`;
+
+            // Update counter styling based on length
+            counter.classList.remove("warning", "error");
+            if (current > max * 0.9) {
+                counter.classList.add("warning");
+            }
+            if (current > max) {
+                counter.classList.add("error");
+            }
+        }
+
+        messageField.addEventListener("input", updateCounter);
+        updateCounter(); // Initialize counter
+    }
+}
+
+// Enhanced form submission with better UX
+function enhanceFormSubmission() {
+    const form = document.querySelector(".contact-section form");
+    const submitBtn = form?.querySelector('button[type="submit"]');
+
+    if (form && submitBtn) {
+        const originalText = submitBtn.textContent;
+
+        form.addEventListener("submit", (e) => {
+            // Add loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Sending...";
+            submitBtn.style.position = "relative";
+
+            // Show success message after delay (simulate processing)
+            setTimeout(() => {
+                // Reset button after successful submission
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+                submitBtn.style.position = "";
+            }, 3000);
+        });
+    }
+}
+
+// Form field validation with visual feedback
+function addVisualValidation() {
+    const form = document.querySelector(".contact-section form");
+    if (!form) return;
+
+    const fields = form.querySelectorAll("input, textarea");
+    
+    fields.forEach(field => {
+        // Real-time validation on input
+        field.addEventListener("input", () => {
+            validateField(field);
+        });
+
+        // Validation on blur
+        field.addEventListener("blur", () => {
+            validateField(field);
+        });
+    });
+}
+
+function validateField(field) {
+    const value = field.value.trim();
+    let isValid = true;
+    let errorMessage = "";
+
+    // Clear previous styling
+    field.style.borderColor = "";
+    field.style.boxShadow = "";
+    
+    // Remove existing error message
+    const existingError = field.parentNode.querySelector(".field-error");
+    if (existingError) {
+        existingError.remove();
+    }
+
+    if (field.hasAttribute("required") && !value) {
+        isValid = false;
+        errorMessage = "This field is required";
+    } else if (field.type === "email" && value && !isValidEmail(value)) {
+        isValid = false;
+        errorMessage = "Please enter a valid email address";
+    } else if (field.id === "name" && value && value.length < 2) {
+        isValid = false;
+        errorMessage = "Name must be at least 2 characters";
+    } else if (field.id === "message" && value && value.length < 10) {
+        isValid = false;
+        errorMessage = "Message must be at least 10 characters";
+    }
+
+    // Apply visual feedback
+    if (!isValid && value) { // Only show error if field has content
+        field.style.borderColor = "#e74c3c";
+        field.style.boxShadow = "0 0 0 2px rgba(231, 76, 60, 0.2)";
+        
+        // Add error message
+        const errorDiv = document.createElement("div");
+        errorDiv.className = "field-error";
+        errorDiv.style.color = "#e74c3c";
+        errorDiv.style.fontSize = "0.8rem";
+        errorDiv.style.marginTop = "-1rem";
+        errorDiv.style.marginBottom = "1rem";
+        errorDiv.textContent = errorMessage;
+        field.parentNode.insertBefore(errorDiv, field.nextSibling);
+    } else if (isValid && value) {
+        field.style.borderColor = "#27ae60";
+        field.style.boxShadow = "0 0 0 2px rgba(39, 174, 96, 0.2)";
+    }
+
+    return isValid;
+}
+
+// Auto-resize textarea
+function addTextareaAutoResize() {
+    const textarea = document.getElementById("message");
+    if (textarea) {
+        textarea.addEventListener("input", function() {
+            this.style.height = "auto";
+            this.style.height = (this.scrollHeight) + "px";
+        });
+    }
+}
+
+// Form analytics (track form interactions)
+function trackFormInteractions() {
+    const form = document.querySelector(".contact-section form");
+    if (!form) return;
+
+    const fields = form.querySelectorAll("input, textarea");
+    let formStartTime = null;
+
+    fields.forEach(field => {
+        field.addEventListener("focus", () => {
+            if (!formStartTime) {
+                formStartTime = Date.now();
+            }
+        });
+    });
+
+    form.addEventListener("submit", () => {
+        if (formStartTime) {
+            const timeSpent = Math.round((Date.now() - formStartTime) / 1000);
+            console.log(`Form completed in ${timeSpent} seconds`);
+            // You could send this to analytics if needed
+        }
+    });
+}
+
+// Initialize all enhancements
+document.addEventListener("DOMContentLoaded", () => {
+    addCharacterCounter();
+    enhanceFormSubmission();
+    addVisualValidation();
+    addTextareaAutoResize();
+    trackFormInteractions();
+    
+    // Focus first field for better UX
+    const firstField = document.getElementById("name");
+    if (firstField) {
+        setTimeout(() => firstField.focus(), 100);
+    }
+});
+
+// Prevent form resubmission on page refresh
+window.addEventListener("beforeunload", () => {
+    const form = document.querySelector(".contact-section form");
+    const submitBtn = form?.querySelector('button[type="submit"]');
+    
+    if (submitBtn && submitBtn.disabled) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Send Message";
+    }
+});

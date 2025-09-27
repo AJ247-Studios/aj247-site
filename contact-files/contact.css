@@ -1089,3 +1089,173 @@ form button:hover {
     flex-direction: column;
   }
 }
+
+/* Add these additional enhancements to contact.css */
+
+/* Enhanced form styling improvements */
+form input:focus, form textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+    transform: translateY(-1px);
+    transition: all 0.3s ease;
+}
+
+/* Better placeholder styling */
+form input::placeholder, form textarea::placeholder {
+    color: #888;
+    opacity: 0.7;
+    font-style: italic;
+}
+
+/* Enhanced validation styling */
+form input:invalid:not(:placeholder-shown) {
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+    animation: shake 0.3s ease-in-out;
+}
+
+form input:valid:not(:placeholder-shown) {
+    border-color: #27ae60;
+    box-shadow: 0 0 0 2px rgba(39, 174, 96, 0.2);
+}
+
+/* Shake animation for invalid fields */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Loading state for submit button */
+form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #ccc;
+    position: relative;
+}
+
+form button:disabled:hover {
+    background-color: #ccc;
+    color: var(--charcoal);
+    transform: none;
+}
+
+/* Loading spinner for submit button */
+form button:disabled::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    border: 2px solid transparent;
+    border-top: 2px solid var(--charcoal);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Enhanced text-us button styling */
+.contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #0078d4;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 120, 212, 0.2);
+    border: none;
+    cursor: pointer;
+}
+
+.contact-btn:hover {
+    background-color: #106ebe;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 120, 212, 0.3);
+}
+
+.contact-btn i {
+    font-size: 1.1rem;
+}
+
+/* Form field icons (optional enhancement) */
+.form-field-with-icon {
+    position: relative;
+}
+
+.form-field-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.form-field-with-icon input,
+.form-field-with-icon textarea {
+    padding-left: 2.5rem;
+}
+
+/* Success message styling */
+.form-success {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    display: none;
+}
+
+.form-error {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    display: none;
+}
+
+/* Character counter for textarea */
+.char-counter {
+    font-size: 0.8rem;
+    color: #888;
+    text-align: right;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+}
+
+.char-counter.warning {
+    color: #f39c12;
+}
+
+.char-counter.error {
+    color: #e74c3c;
+}
+
+/* Mobile enhancements */
+@media (max-width: 768px) {
+    .contact-btn {
+        width: 100%;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+    
+    form input, form textarea {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+}
