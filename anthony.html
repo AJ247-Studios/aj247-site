@@ -402,24 +402,31 @@
     <!-- Contact/Booking Form Section -->
     <section class="contact-section fade-in">
         <h2>Contact Us</h2>
-        <p>Let’s capture something amazing together.</p>
+        <p>Let's capture something amazing together.</p>
 
         <form action="https://formsubmit.co/881ee7e045539028c6d8246562605486" method="POST">
             <label for="name">Name</label>
-            <input type="text" name="name" id="name" required>
+            <input type="text" name="name" id="name" placeholder="John Smith" required>
 
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" required>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="johnsmith@email.com" required>
 
-        <label for="message">Message</label>
-        <textarea name="message" id="message" rows="6" required></textarea>
+            <label for="message">Message</label>
+            <textarea name="message" id="message" rows="6" placeholder="Tell us about your event, date, and location..." required></textarea>
 
-        <!-- Optional FormSubmit hidden fields -->
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://aj247-studios.github.io/aj247-site/thank-you.html">
+            <!-- Optional FormSubmit hidden fields -->
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://aj247-studios.github.io/aj247-site/thank-you.html">
 
-        <button type="submit">Send Message</button>
+            <button type="submit">Send Message</button>
         </form>
+        
+        <!-- Text Us Button -->
+        <div style="margin-top: 1.5rem; text-align: center;">
+            <a href="sms:+48503685377" class="text-us-btn">
+                <i class="fas fa-sms"></i> Text Us: +48 503 685 377
+            </a>
+        </div>
     </section>
 
     <!-- Footer -->
