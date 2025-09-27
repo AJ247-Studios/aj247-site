@@ -335,3 +335,90 @@ document.querySelectorAll('.category-btn').forEach(button => {
       item.replaceWith(iframe);
     });
   });
+
+  // Add these functions to your josiah.js file for enhanced contact form functionality
+
+// Email validation function
+function isValidEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+// Enhanced form validation and submission
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector(".contact-section form");
+    const emailInput = document.getElementById("email");
+    const nameInput = document.getElementById("name");
+    const messageInput = document.getElementById("message");
+    const submitBtn = form?.querySelector('button[type="submit"]');
+
+    if (form && emailInput && submitBtn) {
+        // Real-time email validation
+        emailInput.addEventListener("blur", () => {
+            if (emailInput.value && !isValidEmail(emailInput.value)) {
+                emailInput.style.borderColor = "#e74c3c";
+                emailInput.style.boxShadow = "0 0 0 2px rgba(231, 76, 60, 0.2)";
+            } else if (emailInput.value) {
+                emailInput.style.borderColor = "#27ae60";
+                emailInput.style.boxShadow = "0 0 0 2px rgba(39, 174, 96, 0.2)";
+            }
+        });
+
+        // Form submission validation
+        form.addEventListener("submit", (e) => {
+            let isValid = true;
+            let firstInvalidField = null;
+
+            // Validate email
+            if (!isValidEmail(emailInput.value)) {
+                isValid = false;
+                firstInvalidField = firstInvalidField || emailInput;
+                emailInput.style.borderColor = "#e74c3c";
+                emailInput.style.boxShadow = "0 0 0 2px rgba(231, 76, 60, 0.2)";
+            }
+
+            // Validate name (minimum 2 characters)
+            if (nameInput.value.trim().length < 2) {
+                isValid = false;
+                firstInvalidField = firstInvalidField || nameInput;
+                nameInput.style.borderColor = "#e74c3c";
+                nameInput.style.boxShadow = "0 0 0 2px rgba(231, 76, 60, 0.2)";
+            }
+
+            // Validate message (minimum 10 characters)
+            if (messageInput.value.trim().length < 10) {
+                isValid = false;
+                firstInvalidField = firstInvalidField || messageInput;
+                messageInput.style.borderColor = "#e74c3c";
+                messageInput.style.boxShadow = "0 0 0 2px rgba(231, 76, 60, 0.2)";
+            }
+
+            if (!isValid) {
+                e.preventDefault();
+                alert("Please fill out all fields correctly before submitting.");
+                firstInvalidField?.focus();
+                return false;
+            }
+
+            // Add loading state to button
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Sending...";
+            
+            // Re-enable button after 3 seconds (in case form submission fails)
+            setTimeout(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Send Message";
+            }, 3000);
+        });
+
+        // Clear validation styling on input
+        [nameInput, emailInput, messageInput].forEach(input => {
+            if (input) {
+                input.addEventListener("input", () => {
+                    input.style.borderColor = "";
+                    input.style.boxShadow = "";
+                });
+            }
+        });
+    }
+});
